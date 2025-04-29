@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team - Kiarie's Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .team-section {
+      padding: 6rem 2rem;
+      background-color: #1A2025;
+    }
+    
+    .team-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      padding: 2rem 0;
+    }
+    
+    .team-card {
+      background: #2A3035;
+      border-radius: 15px;
+      overflow: hidden;
+      text-align: center;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 1;
+    }
+    
+    .team-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 255, 144, 0.1) 0%, rgba(255, 184, 0, 0.1) 100%);
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .team-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+    
+    .team-card:hover::before {
+      opacity: 1;
+    }
+    
+    .team-img-container {
+      position: relative;
+      overflow: hidden;
+      height: 300px;
+    }
+    
+    .team-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .team-card:hover .team-img {
+      transform: scale(1.1);
+    }
+    
+    .team-info {
+      padding: 1.5rem;
+    }
+    
+    .team-card h3 {
+      color: #00FF90;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      transition: color 0.3s ease;
+    }
+    
+    .team-card:hover h3 {
+      color: #FFB800;
+    }
+    
+    .team-card p {
+      color: #fff;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(0, 255, 144, 0.1);
+      color: #00FF90;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      background: #00FF90;
+      color: #1A2025;
+      transform: translateY(-5px);
+    }
+    
+    .team-header {
+      background-color: #2A3035;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    
+    .team-header h1 {
+      font-size: 3rem;
+      color: #00FF90;
+      margin-bottom: 1rem;
+    }
+    
+    .team-header p {
+      color: #fff;
+    }
+    
+    .team-header a {
+      color: #00FF90;
+      text-decoration: none;
+    }
+    
+    /* Role badge */
+    .role-badge {
+      display: inline-block;
+      padding: 0.3rem 1rem;
+      background: rgba(0, 255, 144, 0.1);
+      color: #00FF90;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .team-card:hover .role-badge {
+      background: rgba(255, 184, 0, 0.1);
+      color: #FFB800;
+    }
+    
+    /* Animation effects */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .fade-in-up {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .team-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="logo">
+      <img src="images/logo.svg" alt="Kiarie Logo" class="logo-img">
+      <span>Portfolio</span>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+    </div>
+    <div class="nav-center">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li class="dropdown">
+          <a href="#">Pages ▾</a>
+          <ul class="dropdown-content">
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="team.html" class="active">Team</a></li>
+            <li><a href="testimonials.html">Testimonials</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="hire-btn">Hire Me</a>
+    </div>
+    <div class="nav-icons">
+      <div class="search-box" id="searchBox">
+        <input type="text" placeholder="Search..." />
+      </div>
+      <i class="fa-solid fa-magnifying-glass" id="searchIcon"></i>
+      <i class="fa-solid fa-moon" id="themeToggle"></i>
+    </div>
+  </nav>
+
+  <!-- Team Header -->
+  <section class="page-header team-header">
+    <h1>Team</h1>
+    <p><a href="index.html">Home</a> » Team</p>
+  </section>
+
+  <!-- Team Section -->
+  <section class="team-section">
+    <div class="team-container">
+      <div class="team-card fade-in-up" style="animation-delay: 0.1s;">
+        <div class="team-img-container">
+          <img src="images/team1.png" alt="Brian Kiarie Chege" class="team-img">
+        </div>
+        <div class="team-info">
+          <h3>Brian Kiarie Chege</h3>
+          <div class="role-badge">Lead UI/UX Designer</div>
+          <p>Creative visionary with a passion for user-centered design and innovative solutions.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card fade-in-up" style="animation-delay: 0.2s;">
+        <div class="team-img-container">
+          <img src="images/Kwame Boateng_ Expert Service and Support.png" alt="Sarah Johnson" class="team-img">
+        </div>
+        <div class="team-info">
+          <h3>Sarah Johnson</h3>
+          <div class="role-badge">Frontend Developer</div>
+          <p>Expert in creating responsive and interactive user interfaces with modern frameworks.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-dribbble"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card fade-in-up" style="animation-delay: 0.3s;">
+        <div class="team-img-container">
+          <img src="images/team3.png" alt="Michael Lee" class="team-img">
+        </div>
+        <div class="team-info">
+          <h3>Michael Lee</h3>
+          <div class="role-badge">Creative Director</div>
+          <p>Strategic thinker with a keen eye for design trends and brand storytelling.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-behance"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card fade-in-up" style="animation-delay: 0.4s;">
+        <div class="team-img-container">
+          <img src="images/team4.png" alt="Lisa Brown" class="team-img">
+        </div>
+        <div class="team-info">
+          <h3>Lisa Brown</h3>
+          <div class="role-badge">Graphic Designer</div>
+          <p>Visual storyteller who brings concepts to life through compelling imagery and typography.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-behance"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card fade-in-up" style="animation-delay: 0.5s;">
+        <div class="team-img-container">
+          <img src="images/team5.png" alt="Chris Evans" class="team-img">
+        </div>
+        <div class="team-info">
+          <h3>Chris Evans</h3>
+          <div class="role-badge">Full Stack Developer</div>
+          <p>Technical expert who builds robust and scalable applications from front to back.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-stack-overflow"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card fade-in-up" style="animation-delay: 0.6s;">
+        <div class="team-img-container">
+          <img src="images/team6.png" alt="Emma Wilson" class="team-img">
+        </div>
+        <div class="team-info">
+          <h3>Emma Wilson</h3>
+          <div class="role-badge">Marketing Strategist</div>
+          <p>Data-driven marketer who creates compelling campaigns that drive results.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-top">
+      <h2 class="footer-logo"><span>Kiarie Chege</span></h2>
+      <p><i class="fas fa-phone"></i> +254 710 913 737</p>
+      <p><i class="fas fa-envelope"></i> <a href="mailto:kiariebrian8@gmail.com">kiariebrian8@gmail.com</a></p>
+      <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya.</p>
+      <div class="footer-socials">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="currentYear"></span> Kiarie Chege. All Rights Reserved.</p>
+    </div>
+    <button id="scrollToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

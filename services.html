@@ -1,0 +1,562 @@
+<!-- services.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services - UI Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .services-section {
+      padding: 6rem 2rem;
+      background-color: #1A2025;
+    }
+    .services-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 2rem 0;
+    }
+    .service-card {
+      background: #2A3035;
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    .service-icon {
+      font-size: 3rem;
+      color: #00FF90;
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+    .service-card:hover .service-icon {
+      transform: scale(1.2) rotate(5deg);
+    }
+    .service-card h3 {
+      color: #FFB800;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .service-card p {
+      color: #fff;
+      line-height: 1.6;
+    }
+    .services-header {
+      background-color: #2A3035;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .services-header h1 {
+      font-size: 3rem;
+      color: #00FF90;
+      margin-bottom: 1rem;
+    }
+    .services-header p {
+      color: #fff;
+    }
+    .services-header a {
+      color: #00FF90;
+      text-decoration: none;
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    .float {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    /* Service Details Modal */
+    .service-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      overflow-y: auto;
+    }
+    
+    .modal-content {
+      background-color: #2A3035;
+      margin: 5% auto;
+      padding: 2rem;
+      width: 80%;
+      max-width: 800px;
+      border-radius: 10px;
+      position: relative;
+      animation: modalFadeIn 0.3s ease;
+    }
+    
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    
+    .close-modal:hover {
+      color: #00FF90;
+    }
+    
+    .modal-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    
+    .modal-icon {
+      font-size: 3rem;
+      color: #00FF90;
+      margin-right: 1.5rem;
+    }
+    
+    .modal-title {
+      color: #FFB800;
+      font-size: 2rem;
+      margin: 0;
+    }
+    
+    .modal-body {
+      color: #fff;
+      line-height: 1.8;
+    }
+    
+    .modal-body h4 {
+      color: #00FF90;
+      margin: 1.5rem 0 1rem;
+      font-size: 1.3rem;
+    }
+    
+    .modal-body ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .modal-body li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .modal-footer {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    
+    .modal-btn {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background-color: #00FF90;
+      color: #1A2025;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .modal-btn:hover {
+      background-color: #FFB800;
+      transform: translateY(-3px);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .modal-content {
+        width: 95%;
+        margin: 10% auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="logo">
+      <img src="images/logo.svg" alt="Kiarie Logo" class="logo-img">
+      <span>Portfolio</span>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+    </div>
+    <div class="nav-center">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html" class="active">Services</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li class="dropdown">
+          <a href="#">Pages ▾</a>
+          <ul class="dropdown-content">
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="testimonials.html">Testimonials</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="hire-btn">Hire Me</a>
+    </div>
+    <div class="nav-icons">
+      <div class="search-box" id="searchBox">
+        <input type="text" placeholder="Search..." />
+      </div>
+      <i class="fa-solid fa-magnifying-glass" id="searchIcon"></i>
+      <i class="fa-solid fa-moon" id="themeToggle"></i>
+    </div>
+  </nav>
+
+  <!-- Services Header -->
+  <section class="page-header services-header">
+    <h1>Services</h1>
+    <p><a href="index.html">Home</a> » Services</p>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services-section">
+    <div class="services-container">
+      <div class="service-card float" onclick="openServiceModal('web-dev')">
+        <i class="fas fa-code service-icon"></i>
+        <h3>Web Development</h3>
+        <p>Building responsive and modern websites tailored to your needs.</p>
+      </div>
+
+      <div class="service-card float" style="animation-delay: 0.2s;" onclick="openServiceModal('app-dev')">
+        <i class="fas fa-mobile-alt service-icon"></i>
+        <h3>App Development</h3>
+        <p>Creating efficient and engaging mobile applications for all platforms.</p>
+      </div>
+
+      <div class="service-card float" style="animation-delay: 0.4s;" onclick="openServiceModal('ui-ux')">
+        <i class="fas fa-paint-brush service-icon"></i>
+        <h3>UI/UX Design</h3>
+        <p>Designing intuitive and beautiful user experiences and interfaces.</p>
+      </div>
+
+      <div class="service-card float" style="animation-delay: 0.6s;" onclick="openServiceModal('seo')">
+        <i class="fas fa-chart-line service-icon"></i>
+        <h3>SEO & Marketing</h3>
+        <p>Boosting your online visibility and driving more business results.</p>
+      </div>
+
+      <div class="service-card float" style="animation-delay: 0.8s;" onclick="openServiceModal('photography')">
+        <i class="fas fa-camera-retro service-icon"></i>
+        <h3>Photography</h3>
+        <p>Capturing stunning visuals to represent your brand's identity.</p>
+      </div>
+
+      <div class="service-card float" style="animation-delay: 1s;" onclick="openServiceModal('support')">
+        <i class="fas fa-headset service-icon"></i>
+        <h3>Customer Support</h3>
+        <p>Ensuring excellent support experience for your clients globally.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Detail Modals -->
+  <div id="web-dev-modal" class="service-modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeServiceModal('web-dev')">&times;</span>
+      <div class="modal-header">
+        <i class="fas fa-code modal-icon"></i>
+        <h2 class="modal-title">Web Development</h2>
+      </div>
+      <div class="modal-body">
+        <p>My web development services deliver high-performance, responsive websites that drive results for your business. I combine technical expertise with creative design to create websites that not only look great but also perform exceptionally well.</p>
+        
+        <h4>What I Offer</h4>
+        <ul>
+          <li>Custom website development tailored to your specific needs</li>
+          <li>Responsive design that works flawlessly on all devices</li>
+          <li>E-commerce solutions with secure payment gateways</li>
+          <li>Content Management Systems (CMS) for easy updates</li>
+          <li>Website optimization for speed and performance</li>
+          <li>Integration with third-party services and APIs</li>
+        </ul>
+        
+        <h4>My Process</h4>
+        <p>I follow a comprehensive development process that includes:</p>
+        <ol>
+          <li>Discovery and requirements gathering</li>
+          <li>Wireframing and design mockups</li>
+          <li>Development and testing</li>
+          <li>Deployment and launch</li>
+          <li>Post-launch support and maintenance</li>
+        </ol>
+        
+        <h4>Technologies I Use</h4>
+        <p>HTML5, CSS3, JavaScript, React, Vue.js, Node.js, PHP, WordPress, Shopify, and more.</p>
+      </div>
+      <div class="modal-footer">
+        <a href="contact.html" class="modal-btn">Get a Quote</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="app-dev-modal" class="service-modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeServiceModal('app-dev')">&times;</span>
+      <div class="modal-header">
+        <i class="fas fa-mobile-alt modal-icon"></i>
+        <h2 class="modal-title">App Development</h2>
+      </div>
+      <div class="modal-body">
+        <p>My app development services create powerful, user-friendly mobile applications that engage users and drive business growth. I build apps for iOS, Android, and cross-platform solutions that deliver exceptional user experiences.</p>
+        
+        <h4>What I Offer</h4>
+        <ul>
+          <li>Native iOS and Android app development</li>
+          <li>Cross-platform app development using React Native and Flutter</li>
+          <li>UI/UX design specifically optimized for mobile</li>
+          <li>App testing and quality assurance</li>
+          <li>App store optimization and publishing</li>
+          <li>Ongoing maintenance and updates</li>
+        </ul>
+        
+        <h4>My Process</h4>
+        <p>I follow a user-centered approach to app development:</p>
+        <ol>
+          <li>User research and requirements analysis</li>
+          <li>Wireframing and prototyping</li>
+          <li>UI/UX design</li>
+          <li>Development and testing</li>
+          <li>App store submission and launch</li>
+          <li>Post-launch support and updates</li>
+        </ol>
+        
+        <h4>Technologies I Use</h4>
+        <p>Swift, Kotlin, React Native, Flutter, Firebase, AWS, and more.</p>
+      </div>
+      <div class="modal-footer">
+        <a href="contact.html" class="modal-btn">Get a Quote</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="ui-ux-modal" class="service-modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeServiceModal('ui-ux')">&times;</span>
+      <div class="modal-header">
+        <i class="fas fa-paint-brush modal-icon"></i>
+        <h2 class="modal-title">UI/UX Design</h2>
+      </div>
+      <div class="modal-body">
+        <p>My UI/UX design services create intuitive, engaging user experiences that delight users and drive business goals. I combine aesthetics with functionality to design interfaces that are both beautiful and easy to use.</p>
+        
+        <h4>What I Offer</h4>
+        <ul>
+          <li>User research and persona development</li>
+          <li>Information architecture and wireframing</li>
+          <li>UI design with attention to detail</li>
+          <li>Interactive prototypes</li>
+          <li>Usability testing and optimization</li>
+          <li>Design systems and style guides</li>
+        </ul>
+        
+        <h4>My Process</h4>
+        <p>I follow a comprehensive design process:</p>
+        <ol>
+          <li>Discovery and user research</li>
+          <li>Information architecture</li>
+          <li>Wireframing and prototyping</li>
+          <li>UI design and visual styling</li>
+          <li>Usability testing</li>
+          <li>Implementation and iteration</li>
+        </ol>
+        
+        <h4>Tools I Use</h4>
+        <p>Figma, Adobe XD, Sketch, InVision, Adobe Creative Suite, and more.</p>
+      </div>
+      <div class="modal-footer">
+        <a href="contact.html" class="modal-btn">Get a Quote</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="seo-modal" class="service-modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeServiceModal('seo')">&times;</span>
+      <div class="modal-header">
+        <i class="fas fa-chart-line modal-icon"></i>
+        <h2 class="modal-title">SEO & Marketing</h2>
+      </div>
+      <div class="modal-body">
+        <p>My SEO and marketing services help your business increase visibility, attract more visitors, and convert them into customers. I use data-driven strategies to improve your search rankings and drive targeted traffic to your website.</p>
+        
+        <h4>What I Offer</h4>
+        <ul>
+          <li>Technical SEO audits and optimization</li>
+          <li>Keyword research and content strategy</li>
+          <li>On-page and off-page SEO</li>
+          <li>Local SEO for businesses with physical locations</li>
+          <li>Social media marketing</li>
+          <li>Email marketing campaigns</li>
+        </ul>
+        
+        <h4>My Process</h4>
+        <p>I follow a comprehensive SEO and marketing approach:</p>
+        <ol>
+          <li>Initial audit and analysis</li>
+          <li>Strategy development</li>
+          <li>Implementation of SEO best practices</li>
+          <li>Content creation and optimization</li>
+          <li>Link building and outreach</li>
+          <li>Monitoring, reporting, and continuous improvement</li>
+        </ol>
+        
+        <h4>Tools I Use</h4>
+        <p>Google Analytics, SEMrush, Ahrefs, Moz, Screaming Frog, and more.</p>
+      </div>
+      <div class="modal-footer">
+        <a href="contact.html" class="modal-btn">Get a Quote</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="photography-modal" class="service-modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeServiceModal('photography')">&times;</span>
+      <div class="modal-header">
+        <i class="fas fa-camera-retro modal-icon"></i>
+        <h2 class="modal-title">Photography</h2>
+      </div>
+      <div class="modal-body">
+        <p>My photography services capture the essence of your brand through stunning visuals that tell your story. I create high-quality images that elevate your brand presence and connect with your audience on an emotional level.</p>
+        
+        <h4>What I Offer</h4>
+        <ul>
+          <li>Product photography</li>
+          <li>Corporate and team photography</li>
+          <li>Event photography</li>
+          <li>Lifestyle and brand photography</li>
+          <li>Real estate photography</li>
+          <li>Photo editing and retouching</li>
+        </ul>
+        
+        <h4>My Process</h4>
+        <p>I follow a comprehensive photography process:</p>
+        <ol>
+          <li>Initial consultation and concept development</li>
+          <li>Pre-production planning</li>
+          <li>Photo shoot</li>
+          <li>Post-production editing</li>
+          <li>Delivery of final images</li>
+          <li>Optional usage rights and licensing</li>
+        </ol>
+        
+        <h4>Equipment I Use</h4>
+        <p>Professional DSLR and mirrorless cameras, studio lighting, various lenses, and professional editing software.</p>
+      </div>
+      <div class="modal-footer">
+        <a href="contact.html" class="modal-btn">Get a Quote</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="support-modal" class="service-modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeServiceModal('support')">&times;</span>
+      <div class="modal-header">
+        <i class="fas fa-headset modal-icon"></i>
+        <h2 class="modal-title">Customer Support</h2>
+      </div>
+      <div class="modal-body">
+        <p>My customer support services ensure your clients receive exceptional service around the clock. I help you build strong relationships with your customers through responsive, helpful, and personalized support.</p>
+        
+        <h4>What I Offer</h4>
+        <ul>
+          <li>24/7 customer support</li>
+          <li>Email, chat, and phone support</li>
+          <li>Help desk and ticket management</li>
+          <li>Customer feedback and satisfaction surveys</li>
+          <li>Knowledge base and FAQ creation</li>
+          <li>Support team training and management</li>
+        </ul>
+        
+        <h4>My Process</h4>
+        <p>I follow a comprehensive customer support approach:</p>
+        <ol>
+          <li>Initial assessment of your support needs</li>
+          <li>Development of support protocols and scripts</li>
+          <li>Implementation of support systems</li>
+          <li>Ongoing monitoring and quality assurance</li>
+          <li>Regular reporting and performance analysis</li>
+          <li>Continuous improvement and optimization</li>
+        </ol>
+        
+        <h4>Tools I Use</h4>
+        <p>Zendesk, Freshdesk, Intercom, HubSpot, and other leading customer support platforms.</p>
+      </div>
+      <div class="modal-footer">
+        <a href="contact.html" class="modal-btn">Get a Quote</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-top">
+      <h2 class="footer-logo"><span>Kiarie Chege</span></h2>
+      <p><i class="fas fa-phone"></i> +254 710 913 737</p>
+      <p><i class="fas fa-envelope"></i> <a href="mailto:kiariebrian8@gmail.com">kiariebrian8@gmail.com</a></p>
+      <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya.</p>
+      <div class="footer-socials">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="currentYear"></span> Kiarie Chege. All Rights Reserved.</p>
+    </div>
+    <button id="scrollToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    
+    // Service Modal Functions
+    function openServiceModal(serviceId) {
+      document.getElementById(serviceId + '-modal').style.display = 'block';
+      document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+    }
+    
+    function closeServiceModal(serviceId) {
+      document.getElementById(serviceId + '-modal').style.display = 'none';
+      document.body.style.overflow = 'auto'; // Re-enable scrolling
+    }
+    
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+      if (event.target.classList.contains('service-modal')) {
+        event.target.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    }
+  </script>
+</body>
+</html>

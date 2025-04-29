@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI Portfolio - Home</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Logo styles */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .logo-img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+    
+    /* Image resizing styles */
+    .hero-right img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    
+    .hero-right img:hover {
+      transform: scale(1.05);
+    }
+    
+    .skills-left img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    
+    .features-right img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    
+    .features-right img:hover {
+      transform: scale(1.05);
+    }
+    
+    .success-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      aspect-ratio: 4/3;
+    }
+    
+    .success-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .success-card:hover img {
+      transform: scale(1.1);
+    }
+    
+    .success-card .overlay {
+      position: absolute;
+      bottom: -100%;
+      left: 0;
+      width: 100%;
+      padding: 1.5rem;
+      background: rgba(0, 255, 144, 0.9);
+      color: #1A2025;
+      transition: bottom 0.3s ease;
+    }
+    
+    .success-card:hover .overlay {
+      bottom: 0;
+    }
+    
+    .success-card .overlay h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #1A2025;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero-right img, .skills-left img, .features-right img {
+        max-width: 100%;
+      }
+    }
+    
+    /* Company Logos Section Styles */
+    .company-logos-section {
+      padding: 4rem 0;
+      background-color: #1A2025;
+      overflow: hidden;
+    }
+    
+    .company-logos-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .company-logos-container h3 {
+      color: #00FF90;
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+    }
+    
+    .logos-slider {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+    
+    .logos-track {
+      display: flex;
+      animation: scroll 30s linear infinite;
+      width: calc(200px * 12); /* Adjust based on number of logos */
+    }
+    
+    .logo-item {
+      width: 200px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      margin: 0 10px;
+      transition: background-color 0.3s ease;
+    }
+    
+    .logo-item:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .logo-item img {
+      max-width: 100%;
+      max-height: 60px;
+      filter: grayscale(100%) brightness(150%);
+      transition: filter 0.3s ease;
+    }
+    
+    .logo-item:hover img {
+      filter: grayscale(0%) brightness(100%);
+    }
+    
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(calc(-200px * 6)); /* Half of the total width */
+      }
+    }
+    
+    /* Pause animation on hover */
+    .logos-track:hover {
+      animation-play-state: paused;
+    }
+
+    /* Add these styles in the style section */
+    .hero-left p {
+      position: relative;
+      line-height: 1.8;
+      font-size: 1.1rem;
+    }
+
+    .hero-left p span.highlight {
+      position: relative;
+      color: #00FF90;
+      font-weight: 600;
+      animation: highlightPulse 2s infinite;
+    }
+
+    @keyframes highlightPulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+
+    .hero-left p br {
+      display: block;
+      margin: 1rem 0;
+      content: "";
+    }
+
+    .hero-left p::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -20px;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(to bottom, #00FF90, transparent);
+      border-radius: 3px;
+      animation: lineGrow 1.5s ease-out;
+    }
+
+    @keyframes lineGrow {
+      from { height: 0; }
+      to { height: 100%; }
+    }
+
+    .hero-left p span {
+      display: inline-block;
+      animation: fadeInUp 0.5s ease-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-left p span:nth-child(1) { animation-delay: 0.2s; }
+    .hero-left p span:nth-child(2) { animation-delay: 0.4s; }
+    .hero-left p span:nth-child(3) { animation-delay: 0.6s; }
+
+    /* Add spacing adjustments */
+    .hero {
+      padding: 6rem 2rem;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-left {
+      padding-right: 2rem;
+    }
+
+    .hero-right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-buttons {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .what-i-do-section {
+      padding: 6rem 2rem;
+      background: #1A2025;
+    }
+
+    .what-i-do-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .what-i-do-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .what-i-do-card {
+      padding: 2rem;
+      background: #2A3035;
+      border-radius: 15px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .what-i-do-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .what-i-do-icon {
+      font-size: 2.5rem;
+      color: #00FF90;
+      margin-bottom: 1.5rem;
+    }
+
+    .skills-section {
+      padding: 6rem 2rem;
+    }
+
+    .skills-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .features-section {
+      padding: 6rem 2rem;
+      background: #1A2025;
+    }
+
+    .features-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .feature-item {
+      padding: 1.5rem;
+      background: #2A3035;
+      border-radius: 15px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .feature-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature-item i {
+      font-size: 2rem;
+      color: #00FF90;
+      margin-bottom: 1rem;
+    }
+
+    .stats-section {
+      padding: 6rem 2rem;
+    }
+
+    .stats-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+      text-align: center;
+    }
+
+    .stat-item h2 {
+      font-size: 3rem;
+      color: #00FF90;
+      margin-bottom: 1rem;
+    }
+
+    .success-work-section {
+      padding: 6rem 2rem;
+      background: #1A2025;
+    }
+
+    .success-work-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .success-cards {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+      .hero-container,
+      .skills-container,
+      .features-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .hero-left {
+        padding-right: 0;
+      }
+
+      .hero-right {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero,
+      .what-i-do-section,
+      .skills-section,
+      .features-section,
+      .stats-section,
+      .success-work-section {
+        padding: 4rem 1.5rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-item h2 {
+        font-size: 2.5rem;
+      }
+    }
+
+    /* Add button effects */
+    .hero-buttons .btn {
+      position: relative;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .hero-buttons .btn.hire {
+      background: #00FF90;
+      color: #1A2025;
+      border: 2px solid #00FF90;
+    }
+
+    .hero-buttons .btn.portfolio {
+      background: transparent;
+      color: #00FF90;
+      border: 2px solid #00FF90;
+    }
+
+    .hero-buttons .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #1A2025;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+      z-index: -1;
+    }
+
+    .hero-buttons .btn.hire::before {
+      background: #1A2025;
+    }
+
+    .hero-buttons .btn.portfolio::before {
+      background: #00FF90;
+    }
+
+    .hero-buttons .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 255, 144, 0.3);
+    }
+
+    .hero-buttons .btn.hire:hover {
+      color: #00FF90;
+    }
+
+    .hero-buttons .btn.portfolio:hover {
+      color: #1A2025;
+    }
+
+    .hero-buttons .btn:hover::before {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .hero-buttons .btn:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 5px rgba(0, 255, 144, 0.2);
+    }
+
+    .hero-buttons .btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50px;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transform: translateX(100%);
+      transition: transform 0.5s ease;
+    }
+
+    .hero-buttons .btn:hover::after {
+      transform: translateX(-100%);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="logo">
+      <img src="images/logo.svg" alt="Kiarie Logo" class="logo-img">
+      <span>Portfolio</span>
+    </div>
+
+    <div class="hamburger" id="hamburger">
+      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+    </div>
+
+    <div class="nav-center">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li class="dropdown">
+          <a href="#">Pages ▾</a>
+          <ul class="dropdown-content">
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="testimonials.html">Testimonials</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="hire-btn">Hire Me</a>
+
+    </div>
+
+    <div class="nav-icons">
+      <div class="search-box" id="searchBox">
+        <input type="text" placeholder="Search..." />
+      </div>
+      <i class="fa-solid fa-magnifying-glass" id="searchIcon"></i>
+      <i class="fa-solid fa-moon" id="themeToggle"></i>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-container">
+      <div class="hero-left">
+        <h1>Hi, I'm <span class="name">Brian Kiarie Chege</span></h1>
+        <h2 class="typing-text" id="typing"></h2>
+        <p>
+          <span>I am a creative professional with skills in UI/UX design, graphic design, and full stack development. 
+          I create websites and applications that are both beautiful and easy to use.</span>
+          <br>
+          <span>With a strong focus on user experience, I ensure that my designs are not only attractive but also functional. I enjoy bringing ideas to life and solving problems through technology.</span>
+          <br> 
+          <span>Always eager to learn, I stay updated on the latest trends in design and development to deliver high-quality work that helps clients succeed. <span class="highlight">Creative</span> start right away!</span>
+        </p>
+        <div class="hero-buttons">
+          <a href="contact.html" class="btn hire">Hire Me</a>
+          <a href="portfolio.html" class="btn portfolio">Portfolio</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <img src="images/kiarie1 (1).jpeg" alt="Profile" />
+      </div>
+    </div>
+  </section>
+
+  <!-- What I Do Section -->
+  <section id="what-i-do" class="what-i-do-section">
+    <div class="what-i-do-header">
+      <h2>What I Can Do for You</h2>
+    </div>
+    <div class="what-i-do-cards">
+      <div class="what-i-do-card">
+        <i class="fas fa-code what-i-do-icon"></i>
+        <h3>Web Development</h3>
+        <p>I create fast, responsive websites tailored to your business needs.</p>
+      </div>
+      <div class="what-i-do-card">
+        <i class="fas fa-mobile-alt what-i-do-icon"></i>
+        <h3>Mobile Apps</h3>
+        <p>I build efficient, cross-platform mobile apps that connect brands with users.</p>
+      </div>
+      <div class="what-i-do-card">
+        <i class="fas fa-camera-retro what-i-do-icon"></i>
+        <h3>Photography</h3>
+        <p>I capture visuals that tell your story and elevate your brand presence.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="skills-section">
+    <div class="skills-container">
+      <div class="skills-left">
+        <img src="images/kiarie1 (2).jpeg" alt="Skills">
+      </div>
+      <div class="skills-right">
+        <h3 class="small-title">My Skills</h3>
+        <h1 class="big-title">My Featured Skills</h1>
+        <p>I specialize in Branding, Strategy, UI/UX, and Web Development. I bring creative ideas into reality.</p>
+
+        <div class="skill">
+          <div class="skill-header"><h4>UI/UX Design</h4><span>80%</span></div>
+          <div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-header"><h4>Ideas & Technology</h4><span>90%</span></div>
+          <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-header"><h4>Branding Design</h4><span>70%</span></div>
+          <div class="skill-bar"><div class="skill-progress" style="width: 70%;"></div></div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-header"><h4>Responsive Web Design</h4><span>85%</span></div>
+          <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features-section">
+    <div class="features-container">
+      <div class="features-left">
+        <div class="feature-grid">
+          <div class="feature-item">
+            <i class="fas fa-code"></i>
+            <div><h4>Web Development</h4></div>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-paint-brush"></i>
+            <div><h4>Design Trends</h4></div>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-chart-line"></i>
+            <div><h4>Research & Analysis</h4></div>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-headset"></i>
+            <div><h4>Customer Support</h4></div>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-mobile-alt"></i>
+            <div><h4>Responsive Design</h4></div>
+          </div>
+        </div>
+      </div>
+      <div class="features-right">
+        <img src="images/nature-3082832_1280.jpg" alt="Features Image">
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section id="stats" class="stats-section">
+    <div class="stats-container">
+      <div class="stat-item"><h2 id="counter1">0</h2><p>Finished Projects</p></div>
+      <div class="stat-item"><h2 id="counter2">0</h2><p>Working Hours</p></div>
+      <div class="stat-item"><h2 id="counter3">0</h2><p>Online Support</p></div>
+      <div class="stat-item"><h2 id="counter4">0</h2><p>Happy Customers</p></div>
+    </div>
+  </section>
+
+  <!-- Success Work Section -->
+  <section id="success-work" class="success-work-section">
+    <div class="success-work-header">
+      <h2>My Success Work</h2>
+    </div>
+    <div class="success-cards">
+      <div class="success-card"><img src="images/s1.png" alt="Work 1"><div class="overlay"><h3>Innovative Branding</h3></div></div>
+      <div class="success-card"><img src="images/s2.png" alt="Work 2"><div class="overlay"><h3>Mobile App Launch</h3></div></div>
+      <div class="success-card"><img src="images/s3.png" alt="Work 3"><div class="overlay"><h3>Responsive Web Design</h3></div></div>
+      <div class="success-card"><img src="images/s4.png" alt="Work 4"><div class="overlay"><h3>Creative Landing Page</h3></div></div>
+      <div class="success-card"><img src="images/s5.png" alt="Work 5"><div class="overlay"><h3>Product Photography</h3></div></div>
+      <div class="success-card"><img src="images/s6.png" alt="Work 6"><div class="overlay"><h3>Digital Marketing Campaign</h3></div></div>
+    </div>
+  </section>
+  
+  <!-- Company Logos Section -->
+  <section class="company-logos-section">
+    <div class="company-logos-container">
+      <h3>Companies I've Worked With</h3>
+      <div class="logos-slider">
+        <div class="logos-track">
+          <div class="logo-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google">
+          </div>
+          <div class="logo-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft">
+          </div>
+          <div class="logo-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
+          </div>
+          <div class="logo-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+          </div>
+          <div class="logo-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="Meta">
+          </div>
+          <div class="logo-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix">
+          </div>
+          <!-- Duplicate logos for seamless scrolling -->
+          <div class="logo-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google">
+          </div>
+          <div class="logo-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft">
+          </div>
+          <div class="logo-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
+          </div>
+          <div class="logo-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+          </div>
+          <div class="logo-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="Meta">
+          </div>
+          <div class="logo-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-top">
+      <h2 class="footer-logo"><span>Kiarie Chege</span></h2>
+      <p><i class="fas fa-phone"></i> +254 710 913 737</p>
+      <p><i class="fas fa-envelope"></i> <a href="mailto:kiariebrian8@gmail.com">kiariebrian8@gmail.com</a></p>
+      <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya.</p>
+      <div class="footer-socials">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© <span id="currentYear"></span> Kiarie Chege. All Rights Reserved.</p>
+    </div>
+
+    <button id="scrollToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+  </footer>
+
+  <!-- Script -->
+  <script src="js/script.js"></script>
+  <script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
