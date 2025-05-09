@@ -1,6 +1,7 @@
 // Navbar Elements
 const themeToggle = document.getElementById("themeToggle");
 const hamburger = document.getElementById("hamburger");
+const navCenter = document.querySelector(".nav-center");
 const navLinks = document.getElementById("navLinks");
 const dropdown = document.querySelector(".dropdown");
 const searchBox = document.getElementById("searchBox");
@@ -37,15 +38,28 @@ themeToggle.addEventListener("click", () => {
 
 // Hamburger Toggle
 hamburger.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
   hamburger.classList.toggle("active");
+  navCenter.classList.toggle("active");
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener("click", (e) => {
+  if (window.innerWidth <= 768) {
+    if (!navCenter.contains(e.target) && !hamburger.contains(e.target)) {
+      hamburger.classList.remove("active");
+      navCenter.classList.remove("active");
+    }
+  }
 });
 
 // Dropdown Toggle for Mobile
 dropdown.addEventListener("click", (e) => {
   if (window.innerWidth <= 768) {
     e.preventDefault();
-    dropdown.classList.toggle("open");
+    const dropdownContent = dropdown.querySelector(".dropdown-content");
+    if (dropdownContent) {
+      dropdownContent.classList.toggle("show");
+    }
   }
 });
 

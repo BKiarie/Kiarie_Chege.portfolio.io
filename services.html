@@ -181,6 +181,65 @@
       transform: translateY(-3px);
     }
     
+    
+    /* Company Logos Section Styles */
+    .company-logos-section {
+      padding: 6rem 0;
+      background: linear-gradient(135deg, #2A3035 0%, #1A2025 100%);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .company-logos-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+    }
+
+    .company-logos-container h3 {
+      color: #00FF90;
+      margin-bottom: 3rem;
+      font-size: 2.2rem;
+    }
+
+    .logos-slider {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      padding: 2rem 0;
+    }
+
+    .logos-track {
+      display: flex;
+      animation: scroll 30s linear infinite;
+      width: calc(200px * 12);
+    }
+
+    .logo-item {
+      width: 200px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 1rem;
+    }
+
+    .logo-item img {
+      max-width: 100%;
+      max-height: 70px;
+      filter: brightness(150%);
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-200px * 6)); }
+    }
+
+    .logos-track:hover {
+      animation-play-state: paused;
+    }
+
     /* Responsive adjustments */
     @media (max-width: 768px) {
       .modal-content {
@@ -193,11 +252,13 @@
 
 <body>
   <!-- Navbar -->
+ 
   <nav class="navbar" id="navbar">
     <div class="logo">
-      <img src="images/logo.svg" alt="Kiarie Logo" class="logo-img">
-      <span>Portfolio</span>
+      <img src="images/image.jpeg" alt="Kiarie Logo" class="logo-img">
+      <span>Kiarie Chege</span>
     </div>
+
     <div class="hamburger" id="hamburger">
       <div class="bar"></div><div class="bar"></div><div class="bar"></div>
     </div>
@@ -263,8 +324,8 @@
 
       <div class="service-card float" style="animation-delay: 0.8s;" onclick="openServiceModal('photography')">
         <i class="fas fa-camera-retro service-icon"></i>
-        <h3>Photography</h3>
-        <p>Capturing stunning visuals to represent your brand's identity.</p>
+        <h3>Graphic Design</h3>
+        <p>Creating captivating visuals that embody and enhance your brand's identity.</p>
       </div>
 
       <div class="service-card float" style="animation-delay: 1s;" onclick="openServiceModal('support')">
@@ -440,38 +501,41 @@
       <span class="close-modal" onclick="closeServiceModal('photography')">&times;</span>
       <div class="modal-header">
         <i class="fas fa-camera-retro modal-icon"></i>
-        <h2 class="modal-title">Photography</h2>
+        <h2 class="modal-title">Graphic Design</h2>
       </div>
       <div class="modal-body">
         <p>My photography services capture the essence of your brand through stunning visuals that tell your story. I create high-quality images that elevate your brand presence and connect with your audience on an emotional level.</p>
         
         <h4>What I Offer</h4>
         <ul>
-          <li>Product photography</li>
-          <li>Corporate and team photography</li>
-          <li>Event photography</li>
-          <li>Lifestyle and brand photography</li>
-          <li>Real estate photography</li>
-          <li>Photo editing and retouching</li>
+            <li>Brand identity design</li>
+            <li>Marketing materials (brochures, flyers, etc.)</li>
+            <li>Social media graphics</li>
+            <li>Website design and UI/UX</li>
+            <li>Packaging design</li>
+            <li>Logo design</li>
         </ul>
         
         <h4>My Process</h4>
-        <p>I follow a comprehensive photography process:</p>
+        <p>I follow a structured graphic design process:</p>
         <ol>
-          <li>Initial consultation and concept development</li>
-          <li>Pre-production planning</li>
-          <li>Photo shoot</li>
-          <li>Post-production editing</li>
-          <li>Delivery of final images</li>
-          <li>Optional usage rights and licensing</li>
+            <li>Initial consultation and concept development</li>
+            <li>Design planning and brainstorming</li>
+            <li>Creation of design drafts</li>
+            <li>Revisions and feedback incorporation</li>
+            <li>Final delivery of design files</li>
+            <li>Optional usage rights and licensing</li>
         </ol>
         
-        <h4>Equipment I Use</h4>
-        <p>Professional DSLR and mirrorless cameras, studio lighting, various lenses, and professional editing software.</p>
+        <h4>Tools I Use</h4>
+        <p>Professional design software, including Adobe Creative Suite, along with advanced graphic tablets and resources for high-quality output.</p>
       </div>
       <div class="modal-footer">
         <a href="contact.html" class="modal-btn">Get a Quote</a>
       </div>
+    </div>
+  </div>
+
     </div>
   </div>
 
@@ -514,6 +578,55 @@
       </div>
     </div>
   </div>
+
+
+  <!-- Company Logos Section -->
+ <section class="company-logos-section">
+  <div class="company-logos-container">
+    <h3>Companies I've Worked With</h3>
+    <div class="logos-slider">
+      <div class="logos-track">
+        <div class="logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google">
+        </div>
+        <div class="logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft">
+        </div>
+        <div class="logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
+        </div>
+        <div class="logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+        </div>
+        <div class="logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="Meta">
+        </div>
+        <div class="logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix">
+        </div>
+        <!-- Duplicate logos for seamless scrolling -->
+        <div class="logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google">
+        </div>
+        <div class="logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft">
+        </div>
+        <div class="logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
+        </div>
+        <div class="logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+        </div>
+        <div class="logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="Meta">
+        </div>
+        <div class="logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
   <!-- Footer -->
   <footer class="footer">

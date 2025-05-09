@@ -80,81 +80,74 @@
       max-width: 1400px;
       margin: 0 auto;
     }
-    
-    /* Portfolio Filter Styles */
-    .portfolio-filters {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
+
+    /* Portfolio Header Styles */
+    .portfolio-intro {
+      text-align: center;
       margin-bottom: 4rem;
       position: relative;
     }
-    
-    .filter-btn {
-      padding: 1rem 2rem;
-      border: 2px solid #2A3035;
-      background: transparent;
-      color: #E0E0E0;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 1rem;
-      font-weight: 500;
+
+    .portfolio-intro h2 {
+      font-size: 2.5rem;
+      color: #00FF90;
+      margin-bottom: 1rem;
       position: relative;
-      overflow: hidden;
+      display: inline-block;
     }
-    
-    .filter-btn::before {
+
+    .portfolio-intro h2::after {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
       background: #00FF90;
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.3s ease;
-      z-index: -1;
+      border-radius: 2px;
     }
-    
-    .filter-btn:hover::before,
-    .filter-btn.active::before {
-      transform: scaleX(1);
-      transform-origin: left;
+
+    .portfolio-intro p {
+      color: #E0E0E0;
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 1.5rem auto;
+      line-height: 1.6;
     }
-    
-    .filter-btn:hover,
-    .filter-btn.active {
-      color: #1A2025;
-      border-color: #00FF90;
+
+    .portfolio-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 2rem;
     }
-    
-    /* Clear Filter Button */
-    .clear-filter {
-      position: absolute;
-      right: 0;
-      top: 0;
-      padding: 0.5rem 1rem;
-      background: transparent;
-      border: 2px solid #FFB800;
-      color: #FFB800;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      opacity: 0;
-      visibility: hidden;
+
+    .stat-item {
+      text-align: center;
     }
-    
-    .clear-filter.visible {
-      opacity: 1;
-      visibility: visible;
+
+    .stat-number {
+      font-size: 2.5rem;
+      color: #00FF90;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
     }
-    
-    .clear-filter:hover {
-      background: #FFB800;
-      color: #1A2025;
+
+    .stat-label {
+      color: #E0E0E0;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .portfolio-stats {
+        flex-wrap: wrap;
+        gap: 2rem;
+      }
+
+      .stat-item {
+        flex: 0 0 calc(50% - 2rem);
+      }
     }
     
     /* Portfolio Grid Styles */
@@ -271,6 +264,7 @@
       transform: translateY(-3px);
     }
     
+   
     /* Company Logos Section Styles */
     .company-logos-section {
       padding: 6rem 0;
@@ -278,83 +272,57 @@
       overflow: hidden;
       position: relative;
     }
-    
-    .company-logos-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('images/pattern.svg') repeat;
-      opacity: 0.05;
-      animation: slide 20s linear infinite;
-    }
-    
+
     .company-logos-container {
       max-width: 1400px;
       margin: 0 auto;
       text-align: center;
       position: relative;
     }
-    
+
     .company-logos-container h3 {
       color: #00FF90;
       margin-bottom: 3rem;
       font-size: 2.2rem;
-      text-shadow: 0 2px 10px rgba(0, 255, 144, 0.3);
     }
-    
+
     .logos-slider {
       position: relative;
       width: 100%;
       overflow: hidden;
       padding: 2rem 0;
     }
-    
+
     .logos-track {
       display: flex;
       animation: scroll 30s linear infinite;
       width: calc(200px * 12);
     }
-    
+
     .logo-item {
       width: 200px;
-      padding: 2rem;
+      padding: 1.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 15px;
       margin: 0 1rem;
-      transition: all 0.3s ease;
     }
-    
-    .logo-item:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateY(-5px);
-    }
-    
+
     .logo-item img {
       max-width: 100%;
-      max-height: 60px;
-      filter: grayscale(100%) brightness(150%);
-      transition: all 0.3s ease;
+      max-height: 70px;
+      filter: brightness(150%);
     }
-    
-    .logo-item:hover img {
-      filter: grayscale(0%) brightness(100%);
-      transform: scale(1.1);
-    }
-    
+
     @keyframes scroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(calc(-200px * 6)); }
     }
-    
+
     .logos-track:hover {
       animation-play-state: paused;
     }
+
     
     /* Responsive Styles */
     @media (max-width: 1200px) {
@@ -372,11 +340,6 @@
         grid-template-columns: 1fr;
         max-width: 500px;
         margin: 0 auto;
-      }
-      
-      .filter-btn {
-        padding: 0.8rem 1.5rem;
-        font-size: 0.9rem;
       }
       
       .portfolio-overlay h3 {
@@ -558,6 +521,10 @@
       .modal-gallery {
         grid-template-columns: 1fr;
       }
+      
+      .modal-gallery img {
+        height: 180px;
+      }
     }
 
     /* Pop-up Chat Styles */
@@ -646,6 +613,108 @@
     .chat-input button:hover {
       background: #00E07D;
     }
+
+    /* Add smooth transition for portfolio items */
+    .portfolio-item {
+      transition: opacity 0.3s ease;
+    }
+
+    /* Team Section Styles */
+    .team-section {
+      padding: 6rem 2rem;
+      background: linear-gradient(135deg, #2A3035 0%, #1A2025 100%);
+    }
+
+    .team-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .team-container h2 {
+      font-size: 2.5rem;
+      color: #00FF90;
+      margin-bottom: 1rem;
+    }
+
+    .team-container > p {
+      color: #E0E0E0;
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 2rem 0;
+    }
+
+    .team-member {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .team-member:hover {
+      transform: translateY(-10px);
+    }
+
+    .member-image {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 1.5rem;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid #00FF90;
+    }
+
+    .member-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .team-member h3 {
+      color: #00FF90;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .team-member p {
+      color: #E0E0E0;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .member-social {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .member-social a {
+      color: #E0E0E0;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+
+    .member-social a:hover {
+      color: #00FF90;
+    }
+
+    @media (max-width: 768px) {
+      .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+
+      .member-image {
+        width: 150px;
+        height: 150px;
+      }
+    }
   </style>
 </head>
 
@@ -653,9 +722,11 @@
   <!-- Navbar -->
   <nav class="navbar" id="navbar">
     <div class="logo">
-      <img src="images/logo.svg" alt="Kiarie Logo" class="logo-img">
-      <span>Portfolio</span>
+      <img src="images/image.jpeg" alt="Kiarie Logo" class="logo-img">
+      <span>Kiarie Chege</span>
     </div>
+
+
     <div class="hamburger" id="hamburger">
       <div class="bar"></div><div class="bar"></div><div class="bar"></div>
     </div>
@@ -695,17 +766,28 @@
   <!-- Portfolio Section -->
   <section class="portfolio-section">
     <div class="portfolio-container">
-      <div class="portfolio-filters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="web">Web Design</button>
-        <button class="filter-btn" data-filter="app">App Development</button>
-        <button class="filter-btn" data-filter="graphic">Graphic Design</button>
-        <button class="clear-filter">Clear Filters</button>
+      <div class="portfolio-intro">
+        <h2>Featured Projects</h2>
+        <p>Explore my latest work showcasing expertise in web development, UI/UX design, and mobile applications. Each project represents a unique challenge and solution, demonstrating my commitment to creating impactful digital experiences.</p>
+        <div class="portfolio-stats">
+          <div class="stat-item">
+            <div class="stat-number">6+</div>
+            <div class="stat-label">Projects Completed</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">1+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Client Satisfaction</div>
+          </div>
+        </div>
       </div>
       
       <div class="portfolio-grid">
         <div class="portfolio-item" data-category="ecommerce">
-          <img src="images/portfolio.png" alt="E-commerce Website">
+          <img src="images/website ecomerce.jpg" alt="E-commerce Website">
           <div class="portfolio-overlay">
             <h3>E-commerce Website</h3>
             <p>A modern e-commerce platform with seamless user experience</p>
@@ -714,7 +796,7 @@
         </div>
         
         <div class="portfolio-item" data-category="fitness">
-          <img src="images/portfolio2.png" alt="Fitness Tracking App">
+          <img src="images/fitness app.jpg" alt="Fitness Tracking App">
           <div class="portfolio-overlay">
             <h3>Fitness Tracking App</h3>
             <p>Mobile app for tracking workouts and nutrition</p>
@@ -722,8 +804,8 @@
           </div>
         </div>
         
-        <div class="portfolio-item" data-category="design">
-          <img src="images/portfolio3.png" alt="Banking App UI">
+        <div class="portfolio-item" data-category="banking">
+          <img src="images/banking.jpg" alt="Banking App UI">
           <div class="portfolio-overlay">
             <h3>Banking App UI</h3>
             <p>Modern and secure banking interface design</p>
@@ -731,17 +813,17 @@
           </div>
         </div>
         
-        <div class="portfolio-item" data-category="photo">
-          <img src="images/portfolio4.png" alt="Product Photography">
+        <div class="portfolio-item" data-category="uiux">
+          <img src="images/UI UX.jpg" alt="UI/UX Design Portfolio">
           <div class="portfolio-overlay">
-            <h3>Product Photography</h3>
-            <p>Professional product photography for brands</p>
+            <h3>Mobile App UI/UX Design</h3>
+            <p>Creating intuitive and engaging mobile experiences</p>
             <a href="#" class="portfolio-link">View Project</a>
           </div>
         </div>
         
         <div class="portfolio-item" data-category="web">
-          <img src="images/portfolio5.png" alt="Corporate Website">
+          <img src="images/corporate website.jpg" alt="Corporate Website">
           <div class="portfolio-overlay">
             <h3>Corporate Website</h3>
             <p>Responsive corporate website with modern design</p>
@@ -750,7 +832,7 @@
         </div>
         
         <div class="portfolio-item" data-category="app">
-          <img src="images/portfolio6.png" alt="Food Delivery App">
+          <img src="images/food delivery.png" alt="Food Delivery App">
           <div class="portfolio-overlay">
             <h3>Food Delivery App</h3>
             <p>Food delivery platform with real-time tracking</p>
@@ -809,6 +891,94 @@
     </div>
   </section>
 
+  <!-- Team Section -->
+  <section class="team-section">
+    <div class="team-container">
+      <h2>Our Team</h2>
+      <p>Meet the talented individuals behind our success</p>
+      
+      <div class="team-grid">
+        <div class="team-member">
+          <div class="member-image">
+            <img src="images/a1 (1).png" alt="Team Member">
+          </div>
+          <h3>Wanjiku Muthoni</h3>
+          <p>UI/UX Designer</p>
+          <div class="member-social">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+
+        <div class="team-member">
+          <div class="member-image">
+            <img src="images/a1 (2).png" alt="Team Member">
+          </div>
+          <h3>Kamau Wanjiru</h3>
+          <p>Frontend Developer</p>
+          <div class="member-social">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+
+        <div class="team-member">
+          <div class="member-image">
+            <img src="images/a1 (3).png" alt="Team Member">
+          </div>
+          <h3>Nyambura Otieno</h3>
+          <p>Backend Developer</p>
+          <div class="member-social">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+
+        <div class="team-member">
+          <div class="member-image">
+            <img src="images/a1 (4).png" alt="Team Member">
+          </div>
+          <h3>Ochieng' Mwangi</h3>
+          <p>Project Manager</p>
+          <div class="member-social">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+
+        <div class="team-member">
+          <div class="member-image">
+            <img src="images/a1 (5).png" alt="Team Member">
+          </div>
+          <h3>Akinyi Odhiambo</h3>
+          <p>Mobile Developer</p>
+          <div class="member-social">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+
+        <div class="team-member">
+          <div class="member-image">
+            <img src="images/a1 (6).png" alt="Team Member">
+          </div>
+          <h3>Mutua Njoroge</h3>
+          <p>DevOps Engineer</p>
+          <div class="member-social">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-top">
@@ -839,28 +1009,20 @@
       </div>
       <div class="modal-body">
         <div class="modal-gallery">
-          <img src="images/portfolio.png" alt="Project Image 1">
-          <img src="images/portfolio2.png" alt="Project Image 2">
-          <img src="images/portfolio3.png" alt="Project Image 3">
+          <!-- Gallery images will be inserted here by JavaScript -->
         </div>
         <div class="modal-details">
           <h3>About the Project</h3>
-          <p>Detailed description of the project goes here. This can include the project's goals, challenges, and solutions implemented.</p>
+          <p>Detailed description of the project goes here.</p>
           
           <h3>Key Features</h3>
           <ul>
-            <li>Feature 1 description</li>
-            <li>Feature 2 description</li>
-            <li>Feature 3 description</li>
+            <!-- Features will be inserted here by JavaScript -->
           </ul>
 
           <h3>Technologies Used</h3>
           <div class="modal-tech">
-            <span class="tech-tag">HTML5</span>
-            <span class="tech-tag">CSS3</span>
-            <span class="tech-tag">JavaScript</span>
-            <span class="tech-tag">React</span>
-            <span class="tech-tag">Node.js</span>
+            <!-- Tech tags will be inserted here by JavaScript -->
           </div>
 
           <div class="modal-links">
@@ -892,108 +1054,144 @@
   <script>
     document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-    // Add this to your existing script section
+    // Project data
     const projectData = {
-      'ecommerce': {
-        title: 'E-commerce Website',
-        category: 'Web Development',
-        description: 'A modern e-commerce platform built with React and Node.js, featuring real-time inventory management, secure payment processing, and an intuitive user interface.',
+      ecommerce: {
+        title: "E-commerce Website",
+        category: "E-commerce",
+        description: "A modern e-commerce platform with seamless user experience, featuring product browsing, cart management, secure checkout, and order tracking.",
         features: [
-          'Responsive design for all devices',
-          'Real-time inventory tracking',
-          'Secure payment gateway integration',
-          'User authentication and profiles',
-          'Order management system'
+          "Responsive product catalog with search and filters",
+          "Secure payment gateway integration",
+          "User authentication and profile management",
+          "Order tracking and history",
+          "Admin dashboard for inventory management"
         ],
-        tech: ['React', 'Node.js', 'MongoDB', 'Express', 'Stripe'],
-        images: ['images/portfolio.png', 'images/portfolio2.png', 'images/portfolio3.png'],
-        liveLink: '#',
-        githubLink: '#'
+        tech: ["React", "Node.js", "MongoDB", "Express", "Stripe API"],
+        images: [
+          "images/website ecomerce.jpg",
+          "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800",
+          "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800"
+        ],
+        liveLink: "#",
+        githubLink: "#"
       },
-      'fitness': {
-        title: 'Fitness Tracking App',
-        category: 'App Development',
-        description: 'A comprehensive fitness tracking application that helps users monitor their workouts, nutrition, and progress towards their fitness goals.',
+      fitness: {
+        title: "Fitness Tracking App",
+        category: "Fitness",
+        description: "A comprehensive fitness tracking mobile application that helps users monitor workouts, nutrition, and progress towards their fitness goals.",
         features: [
-          'Workout tracking and planning',
-          'Nutrition monitoring',
-          'Progress analytics',
-          'Social sharing features',
-          'Integration with fitness devices'
+          "Workout planning and tracking",
+          "Nutrition and meal planning",
+          "Progress tracking and analytics",
+          "Social features and challenges",
+          "Integration with fitness devices"
         ],
-        tech: ['React Native', 'Firebase', 'Redux', 'Node.js'],
-        images: ['images/portfolio2.png', 'images/portfolio3.png', 'images/portfolio4.png'],
-        liveLink: '#',
-        githubLink: '#'
+        tech: ["React Native", "Firebase", "Redux", "Node.js", "MongoDB"],
+        images: [
+          "images/fitness app.jpg",
+          "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800",
+          "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800"
+        ],
+        liveLink: "#",
+        githubLink: "#"
       },
-      'design': {
-        title: 'Banking App UI',
-        category: 'UI/UX Design',
-        description: 'A modern banking interface designed with a focus on security, accessibility, and user experience. The design incorporates advanced security features while maintaining a clean and intuitive interface.',
+      banking: {
+        title: "Banking App UI",
+        category: "UI/UX Design",
+        description: "A modern and secure banking interface design focusing on user experience, security, and accessibility. Features a clean, intuitive interface for managing finances.",
         features: [
-          'Biometric authentication',
-          'Real-time transaction monitoring',
-          'Customizable dashboard',
-          'Dark/Light mode support',
-          'Accessibility features'
+          "Secure authentication system",
+          "Real-time balance updates",
+          "Transaction history and analytics",
+          "Bill payment and transfers",
+          "Investment portfolio tracking"
         ],
-        tech: ['Figma', 'Adobe XD', 'Sketch', 'InVision', 'Zeplin'],
-        images: ['images/portfolio3.png', 'images/portfolio4.png', 'images/portfolio5.png'],
-        liveLink: '#',
-        githubLink: '#'
+        tech: ["Figma", "Adobe XD", "Sketch", "Principle", "Zeplin"],
+        images: [
+          "images/banking.jpg",
+          "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800",
+          "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800"
+        ],
+        liveLink: "#",
+        githubLink: "#"
       },
-      'photo': {
-        title: 'Product Photography',
-        category: 'Photography',
-        description: 'A professional product photography portfolio showcasing high-quality images for various brands and products. The project demonstrates expertise in lighting, composition, and post-processing.',
+      uiux: {
+        title: "Mobile App UI/UX Design",
+        category: "UI/UX Design",
+        description: "A collection of modern mobile app interface designs focusing on user experience, accessibility, and visual appeal.",
         features: [
-          'Studio lighting setup',
-          'Product staging',
-          'Post-processing workflow',
-          'Brand consistency',
-          'E-commerce optimization'
+          "User-centered design approach",
+          "Interactive prototypes",
+          "Accessibility compliance",
+          "Design system creation",
+          "User testing and feedback"
         ],
-        tech: ['Adobe Photoshop', 'Lightroom', 'Capture One', 'Canon EOS R5', 'Profoto Lighting'],
-        images: ['images/portfolio4.png', 'images/portfolio5.png', 'images/portfolio6.png'],
-        liveLink: '#',
-        githubLink: '#'
+        tech: ["Figma", "Adobe XD", "Sketch", "InVision", "Principle"],
+        images: [
+          "images/UI UX.jpg",
+          "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800",
+          "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800"
+        ],
+        liveLink: "#",
+        githubLink: "#"
       },
-      'web': {
-        title: 'Corporate Website',
-        category: 'Web Development',
-        description: 'A responsive corporate website designed to showcase company services and establish a strong online presence. The site features modern design elements and optimized performance.',
+      web: {
+        title: "Corporate Website",
+        category: "Web Development",
+        description: "A responsive corporate website with modern design, featuring company information, services, and contact details.",
         features: [
-          'Responsive design',
-          'SEO optimization',
-          'Content management system',
-          'Contact form integration',
-          'Analytics dashboard'
+          "Responsive design for all devices",
+          "Dynamic content management",
+          "Contact form with validation",
+          "Blog section",
+          "SEO optimization"
         ],
-        tech: ['HTML5', 'CSS3', 'JavaScript', 'WordPress', 'PHP'],
-        images: ['images/portfolio5.png', 'images/portfolio6.png', 'images/portfolio.png'],
-        liveLink: '#',
-        githubLink: '#'
+        tech: ["HTML5", "CSS3", "JavaScript", "PHP", "MySQL"],
+        images: [
+          "images/corporate website.jpg",
+          "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800",
+          "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800"
+        ],
+        liveLink: "#",
+        githubLink: "#"
       },
-      'app': {
-        title: 'Food Delivery App',
-        category: 'App Development',
-        description: 'A food delivery application that connects restaurants with customers, featuring real-time order tracking, secure payments, and a user-friendly interface.',
+      app: {
+        title: "Food Delivery App",
+        category: "App Development",
+        description: "A food delivery platform with real-time tracking, featuring restaurant listings, order management, and delivery tracking.",
         features: [
-          'Real-time order tracking',
-          'Restaurant search and filtering',
-          'Secure payment processing',
-          'Order history and favorites',
-          'Push notifications'
+          "Restaurant search and filtering",
+          "Real-time order tracking",
+          "Payment integration",
+          "Delivery status updates",
+          "User reviews and ratings"
         ],
-        tech: ['Flutter', 'Firebase', 'Google Maps API', 'Stripe', 'Node.js'],
-        images: ['images/portfolio6.png', 'images/portfolio.png', 'images/portfolio2.png'],
-        liveLink: '#',
-        githubLink: '#'
+        tech: ["Flutter", "Firebase", "Google Maps API", "Node.js", "MongoDB"],
+        images: [
+          "images/food delivery.png",
+          "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800",
+          "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800"
+        ],
+        liveLink: "#",
+        githubLink: "#"
       }
     };
 
+    // Update portfolio items to use the modal
+    document.querySelectorAll('.portfolio-item').forEach(item => {
+      const viewButton = item.querySelector('.portfolio-link');
+      viewButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        const projectId = item.getAttribute('data-category');
+        openModal(projectId);
+      });
+    });
+
     function openModal(projectId) {
       const project = projectData[projectId];
+      if (!project) return;
+
       const modal = document.getElementById('projectModal');
       const modalContent = modal.querySelector('.modal-content');
       
@@ -1003,7 +1201,9 @@
       
       // Update gallery images
       const gallery = modalContent.querySelector('.modal-gallery');
-      gallery.innerHTML = project.images.map(img => `<img src="${img}" alt="${project.title}">`).join('');
+      gallery.innerHTML = project.images.map(img => `
+        <img src="${img}" alt="${project.title}" loading="lazy">
+      `).join('');
       
       // Update project details
       const details = modalContent.querySelector('.modal-details');
@@ -1039,55 +1239,6 @@
       if (e.target === e.currentTarget) closeModal();
     });
 
-    // Update portfolio items to use the modal
-    document.querySelectorAll('.portfolio-item').forEach(item => {
-      const viewButton = item.querySelector('.portfolio-link');
-      viewButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        const projectId = item.dataset.category;
-        openModal(projectId);
-      });
-    });
-
-    // Filter functionality
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const clearFilter = document.querySelector('.clear-filter');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        // Remove active class from all buttons
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        // Add active class to clicked button
-        button.classList.add('active');
-        
-        const filter = button.getAttribute('data-filter');
-        
-        portfolioItems.forEach(item => {
-          if (filter === 'all' || item.classList.contains(filter)) {
-            item.style.display = 'block';
-          } else {
-            item.style.display = 'none';
-          }
-        });
-        
-        // Show clear filter button if not on 'all'
-        if (filter !== 'all') {
-          clearFilter.classList.add('visible');
-        } else {
-          clearFilter.classList.remove('visible');
-        }
-      });
-    });
-    
-    // Clear filter functionality
-    clearFilter.addEventListener('click', () => {
-      filterButtons.forEach(btn => btn.classList.remove('active'));
-      filterButtons[0].classList.add('active');
-      portfolioItems.forEach(item => item.style.display = 'block');
-      clearFilter.classList.remove('visible');
-    });
-    
     // Chat popup functionality
     const chatPopup = document.querySelector('.chat-popup');
     const closeChat = document.querySelector('.close-chat');
@@ -1125,6 +1276,41 @@
         chatSend.click();
       }
     });
+
+    // Update modal gallery styles
+    const style = document.createElement('style');
+    style.textContent = `
+      .modal-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin: 1.5rem 0;
+      }
+
+      .modal-gallery img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+
+      .modal-gallery img:hover {
+        transform: scale(1.05);
+      }
+
+      @media (max-width: 768px) {
+        .modal-gallery {
+          grid-template-columns: 1fr;
+        }
+        
+        .modal-gallery img {
+          height: 180px;
+        }
+      }
+    `;
+    document.head.appendChild(style);
   </script>
 </body>
 </html>

@@ -201,65 +201,65 @@
       }
     }
     
+  
     /* Company Logos Section Styles */
     .company-logos-section {
-      padding: 4rem 0;
-      background-color: #2A3035;
+      padding: 6rem 0;
+      background: linear-gradient(135deg, #2A3035 0%, #1A2025 100%);
       overflow: hidden;
+      position: relative;
     }
-    
+
     .company-logos-container {
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
       text-align: center;
+      position: relative;
     }
-    
+
     .company-logos-container h3 {
       color: #00FF90;
-      margin-bottom: 2rem;
-      font-size: 1.8rem;
+      margin-bottom: 3rem;
+      font-size: 2.2rem;
     }
-    
+
     .logos-slider {
       position: relative;
       width: 100%;
       overflow: hidden;
+      padding: 2rem 0;
     }
-    
+
     .logos-track {
       display: flex;
       animation: scroll 30s linear infinite;
-      width: calc(200px * 12); /* Adjust based on number of logos */
+      width: calc(200px * 12);
     }
-    
+
     .logo-item {
       width: 200px;
-      padding: 0 20px;
+      padding: 1.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
+      margin: 0 1rem;
     }
-    
+
     .logo-item img {
       max-width: 100%;
-      max-height: 60px;
-      filter: grayscale(100%) brightness(150%);
-      transition: filter 0.3s ease;
+      max-height: 70px;
+      filter: brightness(150%);
     }
-    
-    .logo-item img:hover {
-      filter: grayscale(0%) brightness(100%);
-    }
-    
+
     @keyframes scroll {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(calc(-200px * 6)); /* Half of the total width */
-      }
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-200px * 6)); }
     }
-    
+
+    .logos-track:hover {
+      animation-play-state: paused;
+    }
+
     /* Pause animation on hover */
     .logos-track:hover {
       animation-play-state: paused;
@@ -271,9 +271,10 @@
   <!-- Navbar -->
   <nav class="navbar" id="navbar">
     <div class="logo">
-      <img src="images/logo.svg" alt="Kiarie Logo" class="logo-img">
-      <span>Portfolio</span>
+      <img src="images/image.jpeg" alt="Kiarie Logo" class="logo-img">
+      <span>Kiarie Chege</span>
     </div>
+
     <div class="hamburger" id="hamburger">
       <div class="bar"></div><div class="bar"></div><div class="bar"></div>
     </div>

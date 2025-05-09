@@ -103,72 +103,65 @@
       }
     }
     
+   
     /* Company Logos Section Styles */
     .company-logos-section {
-      padding: 4rem 0;
-      background-color: #1A2025;
+      padding: 6rem 0;
+      background: linear-gradient(135deg, #2A3035 0%, #1A2025 100%);
       overflow: hidden;
+      position: relative;
     }
-    
+
     .company-logos-container {
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
       text-align: center;
+      position: relative;
     }
-    
+
     .company-logos-container h3 {
       color: #00FF90;
-      margin-bottom: 2rem;
-      font-size: 1.8rem;
+      margin-bottom: 3rem;
+      font-size: 2.2rem;
     }
-    
+
     .logos-slider {
       position: relative;
       width: 100%;
       overflow: hidden;
+      padding: 2rem 0;
     }
-    
+
     .logos-track {
       display: flex;
       animation: scroll 30s linear infinite;
-      width: calc(200px * 12); /* Adjust based on number of logos */
+      width: calc(200px * 12);
     }
-    
+
     .logo-item {
       width: 200px;
-      padding: 0 20px;
+      padding: 1.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: rgba(255, 255, 255, 0.05);
-      border-radius: 10px;
-      margin: 0 10px;
-      transition: background-color 0.3s ease;
+      margin: 0 1rem;
     }
-    
-    .logo-item:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-    
+
     .logo-item img {
       max-width: 100%;
-      max-height: 60px;
-      filter: grayscale(100%) brightness(150%);
-      transition: filter 0.3s ease;
+      max-height: 70px;
+      filter: brightness(150%);
     }
-    
-    .logo-item:hover img {
-      filter: grayscale(0%) brightness(100%);
-    }
-    
+
     @keyframes scroll {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(calc(-200px * 6)); /* Half of the total width */
-      }
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-200px * 6)); }
     }
+
+    .logos-track:hover {
+      animation-play-state: paused;
+    }
+
     
     /* Pause animation on hover */
     .logos-track:hover {
@@ -531,8 +524,8 @@
   <!-- Navbar -->
   <nav class="navbar" id="navbar">
     <div class="logo">
-      <img src="images/logo.svg" alt="Kiarie Logo" class="logo-img">
-      <span>Portfolio</span>
+      <img src="images/image.jpeg" alt="Kiarie Logo" class="logo-img">
+      <span>Kiarie Chege</span>
     </div>
 
     <div class="hamburger" id="hamburger">
@@ -680,7 +673,7 @@
         </div>
       </div>
       <div class="features-right">
-        <img src="images/nature-3082832_1280.jpg" alt="Features Image">
+        <img src="images/a1 (3).jpg" alt="Features Image">
       </div>
     </div>
   </section>
@@ -701,12 +694,12 @@
       <h2>My Success Work</h2>
     </div>
     <div class="success-cards">
-      <div class="success-card"><img src="images/s1.png" alt="Work 1"><div class="overlay"><h3>Innovative Branding</h3></div></div>
-      <div class="success-card"><img src="images/s2.png" alt="Work 2"><div class="overlay"><h3>Mobile App Launch</h3></div></div>
-      <div class="success-card"><img src="images/s3.png" alt="Work 3"><div class="overlay"><h3>Responsive Web Design</h3></div></div>
-      <div class="success-card"><img src="images/s4.png" alt="Work 4"><div class="overlay"><h3>Creative Landing Page</h3></div></div>
-      <div class="success-card"><img src="images/s5.png" alt="Work 5"><div class="overlay"><h3>Product Photography</h3></div></div>
-      <div class="success-card"><img src="images/s6.png" alt="Work 6"><div class="overlay"><h3>Digital Marketing Campaign</h3></div></div>
+      <div class="success-card"><img src="images/branding.jpg" alt="Work 1"><div class="overlay"><h3>Innovative Branding</h3></div></div>
+      <div class="success-card"><img src="images/UI UX.jpg" alt="Work 2"><div class="overlay"><h3>UI UX Design</h3></div></div>
+      <div class="success-card"><img src="images/responsive.jpg" alt="Work 3"><div class="overlay"><h3>Responsive Web Design</h3></div></div>
+      <div class="success-card"><img src="images/landing page.jpg" alt="Work 4"><div class="overlay"><h3>Creative Landing Page</h3></div></div>
+      <div class="success-card"><img src="images/graphic design.jpg" alt="Work 5"><div class="overlay"><h3>Graphic Design</h3></div></div>
+      <div class="success-card"><img src="images/marketing.jpg" alt="Work 6"><div class="overlay"><h3>Digital Marketing Campaign</h3></div></div>
     </div>
   </section>
   

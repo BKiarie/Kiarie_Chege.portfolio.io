@@ -754,50 +754,55 @@
     background-color: #00cc72;
   }
 
-  /* Responsive Design */
+  /* Mobile Menu Styles */
   @media (max-width: 768px) {
-    .nav-center {
-      display: none;
-    }
-  
-    .nav-links {
-      flex-direction: column;
-    }
-  
-    .nav-links.active {
-      display: flex;
-    }
-  
     .hamburger {
-      display: flex;
+        display: flex;
     }
-  
-    .search-box input {
-      font-size: 0.9rem;
+
+    .nav-center {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background-color: #1A2025;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+        transition: left 0.3s ease;
+        z-index: 1000;
     }
-    
-    .hero-container,
-    .skills-container,
-    .features-container {
-      flex-direction: column;
-      text-align: center;
+
+    .nav-center.active {
+        left: 0;
     }
-    
-    .hero-buttons,
-    .feature-grid {
-      justify-content: center;
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
     }
-    
-    .stats-container {
-      gap: 2rem;
+
+    .nav-links li {
+        width: 100%;
+        margin: 1rem 0;
     }
-    
-    .contact-form .form-row {
-      flex-direction: column;
+
+    .nav-links li a {
+        display: block;
+        padding: 1rem;
     }
-    
-    .contact-form .half-width {
-      flex: 1 1 100%;
+
+    .dropdown-content {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        background-color: #2A3035;
+    }
+
+    .dropdown-content li a {
+        padding: 1rem;
     }
   }
 
