@@ -49,34 +49,3 @@ It showcases a creative professional's work, testimonials, skills, team, and con
 3. Open `index.html` in any modern web browser (Chrome, Edge, Firefox, Safari).
 4. Navigate between pages using the navbar links.
 
-✅ No server needed. It's a pure frontend project (static website).
-
----
-
-## 📷 Image Sources
-
-- All project, team, and testimonial images were generated or sourced specifically for assignment purposes.
-
----
-
-## 📌 Notes
-
-- This project demonstrates knowledge of **HTML5**, **CSS3**, **Responsive Design**, **Flexbox**, **CSS Grid**, and basic **DOM manipulation** with JavaScript.
-- Custom CSS (not Tailwind, Bootstrap, etc.) was used.
-- Fonts and Icons are provided via [FontAwesome CDN](https://cdnjs.com/).
-
----
-
-## 🙌 Acknowledgements
-
-Special thanks to the resources and tools used:
-- [FontAwesome](https://fontawesome.com/)
-- [Unsplash](https://unsplash.com/) / [Pexels](https://pexels.com/) for sample images (where applicable)
-
----
-
-## ✨ Developed by
-**Felix Atoma**  
-**nqobile hleza**  
-**brian	chege**  
-(UI Portfolio Project - 2025)
