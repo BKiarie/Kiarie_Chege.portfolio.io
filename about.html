@@ -8,6 +8,7 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="images/kiarie.png">
   <style>
     .about-me-section {
       padding: 6rem 2rem;
@@ -391,6 +392,7 @@
       max-width: 1200px;
       margin: 0 auto;
       display: flex;
+      flex-direction: row-reverse;
       gap: 4rem;
       align-items: center;
     }
@@ -410,10 +412,28 @@
     .skills-right {
       flex: 1;
       padding: 2rem;
+      background-color: #2A3035;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
     
     .skill {
-      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: #1A2025;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    
+    .skill:hover {
+      transform: translateY(-5px);
     }
     
     .skill-header {
@@ -435,14 +455,14 @@
     
     .skill-bar {
       height: 12px;
-      background: #1A2025;
+      background: linear-gradient(to right, #00FF90, #00E07D);
       border-radius: 6px;
       overflow: hidden;
     }
     
     .skill-progress {
       height: 100%;
-      background: #00FF90;
+      background: linear-gradient(to right, #00FF90, #00E07D);
       border-radius: 6px;
       transition: width 1.5s ease;
     }
@@ -486,6 +506,12 @@
       border-radius: 10px;
       position: relative;
       margin-left: auto;
+      opacity: 1;
+      transform: translateY(0);
+      z-index: 2;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid rgba(0, 255, 144, 0.1);
     }
     
     .timeline-item:nth-child(even) .timeline-content {
@@ -531,6 +557,13 @@
     .timeline-content p {
       color: #E0E0E0;
       line-height: 1.6;
+    }
+    
+    .timeline-content:hover {
+      transform: scale(1.02) translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3),
+                  0 0 20px rgba(0, 255, 144, 0.2);
+      border: 1px solid rgba(0, 255, 144, 0.3);
     }
     
     /* Video Tour Section Styles */
@@ -686,6 +719,21 @@
       content: ' »';
       color: #E0E0E0;
     }
+
+    /* Section Header Styles */
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+      position: relative;
+    }
+    
+    .small-title {
+      color: #FFB800;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
   </style>
 </head>
 
@@ -694,7 +742,7 @@
 <!-- Navbar -->
 <nav class="navbar" id="navbar">
   <div class="logo">
-    <img src="images/image.jpeg" alt="Kiarie Logo" class="logo-img">
+    <img src="images/kiarie.png" alt="Kiarie Logo" class="logo-img">
     <span>Kiarie Chege</span>
   </div>
   <div class="hamburger" id="hamburger">
@@ -777,27 +825,29 @@
     </div>
     <div class="skills-right">
       <h3 class="small-title">My Skills</h3>
-      <h1 class="big-title">My Featured Skills</h1>
+    
       <p>I specialize in Branding, Strategy, UI/UX, and Web Development. I bring creative ideas into reality.</p>
 
-      <div class="skill">
-        <div class="skill-header"><h4>UI/UX Design</h4><span>80%</span></div>
-        <div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div>
-      </div>
+      <div class="skill-grid">
+        <div class="skill">
+          <div class="skill-header"><h4>UI/UX Design</h4><span>80%</span></div>
+          <div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div>
+        </div>
 
-      <div class="skill">
-        <div class="skill-header"><h4>Ideas & Technology</h4><span>90%</span></div>
-        <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
-      </div>
+        <div class="skill">
+          <div class="skill-header"><h4>Ideas & Technology</h4><span>90%</span></div>
+          <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
+        </div>
 
-      <div class="skill">
-        <div class="skill-header"><h4>Branding Design</h4><span>70%</span></div>
-        <div class="skill-bar"><div class="skill-progress" style="width: 70%;"></div></div>
-      </div>
+        <div class="skill">
+          <div class="skill-header"><h4>Branding Design</h4><span>70%</span></div>
+          <div class="skill-bar"><div class="skill-progress" style="width: 70%;"></div></div>
+        </div>
 
-      <div class="skill">
-        <div class="skill-header"><h4>Responsive Web Design</h4><span>85%</span></div>
-        <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
+        <div class="skill">
+          <div class="skill-header"><h4>Responsive Web Design</h4><span>85%</span></div>
+          <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -810,7 +860,7 @@
     <h1 class="big-title">My Work Experience</h1>
     
     <div class="timeline">
-      <div class="timeline-item">
+      <div class="timeline-item fade-in-up">
         <div class="timeline-content">
           <h3>Juniour Fullstack Developer</h3>
           <h4>Fanasoft.</h4>
@@ -819,7 +869,7 @@
         </div>
       </div>
       
-      <div class="timeline-item">
+      <div class="timeline-item fade-in-up">
         <div class="timeline-content">
           <h3>Graphic Designer</h3>
           <h4>Digital Agency</h4>
@@ -829,7 +879,7 @@
         </div>
       </div>
       
-      <div class="timeline-item">
+      <div class="timeline-item fade-in-up">
         <div class="timeline-content">
           <h3>Junior Developer</h3>
           <h4>InRank Company</h4>
@@ -938,15 +988,47 @@
 <!-- Footer -->
 <footer class="footer">
   <div class="footer-top">
-    <h2 class="footer-logo"><span>Kiarie Chege</span></h2>
-    <p><i class="fas fa-phone"></i> +254 710 913 737</p>
-    <p><i class="fas fa-envelope"></i> <a href="mailto:kiariebrian8@gmail.com">kiariebrian8@gmail.com</a></p>
-    <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya.</p>
-    <div class="footer-socials">
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    <div class="footer-brand">
+      <div class="logo">
+        <img src="images/kiarie.png" alt="Kiarie Logo" class="logo-img">
+        <h2 class="footer-logo"><span>Kiarie Chege</span></h2>
+      </div>
+      <p>Creating beautiful digital experiences through innovative design and development solutions.</p>
+      <div class="footer-socials">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About</a></li>
+        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+        <li><a href="portfolio.html"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-contact">
+      <h3>Contact Info</h3>
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <span>+254 710 913 737</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <span><a href="mailto:kiariebrian8@gmail.com">kiariebrian8@gmail.com</a></span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Nairobi, Kenya</span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -957,10 +1039,28 @@
   <button id="scrollToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 </footer>
 
-<!-- Script -->
+<!-- Scripts -->
 <script src="js/script.js"></script>
 <script>
   document.getElementById('currentYear').textContent = new Date().getFullYear();
+  
+  // Simple scroll to top functionality
+  const scrollToTopBtn = document.getElementById('scrollToTop');
+  
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      scrollToTopBtn.style.display = 'flex';
+    } else {
+      scrollToTopBtn.style.display = 'none';
+    }
+  });
+  
+  scrollToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
 </script>
 
 </body>

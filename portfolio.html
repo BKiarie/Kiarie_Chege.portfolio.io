@@ -6,6 +6,7 @@
   <title>Portfolio - UI Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="images/kiarie.png">
   <style>
     /* Portfolio Header Styles */
     .portfolio-header {
@@ -722,7 +723,7 @@
   <!-- Navbar -->
   <nav class="navbar" id="navbar">
     <div class="logo">
-      <img src="images/image.jpeg" alt="Kiarie Logo" class="logo-img">
+      <img src="images/kiarie.png" alt="Kiarie Logo" class="logo-img">
       <span>Kiarie Chege</span>
     </div>
 
@@ -740,7 +741,7 @@
           <a href="#">Pages ▾</a>
           <ul class="dropdown-content">
             <li><a href="portfolio.html" class="active">Portfolio</a></li>
-            <li><a href="team.html">Team</a></li>
+            <!-- <li><a href="team.html">Team</a></li> Team page link disabled -->
             <li><a href="testimonials.html">Testimonials</a></li>
           </ul>
         </li>
@@ -891,7 +892,7 @@
     </div>
   </section>
 
-  <!-- Team Section -->
+  <!-- Team Section (Disabled)
   <section class="team-section">
     <div class="team-container">
       <h2>Our Team</h2>
@@ -963,39 +964,62 @@
           </div>
         </div>
 
-        <div class="team-member">
-          <div class="member-image">
-            <img src="images/a1 (6).png" alt="Team Member">
-          </div>
-          <h3>Mutua Njoroge</h3>
-          <p>DevOps Engineer</p>
-          <div class="member-social">
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-github"></i></a>
-          </div>
-        </div>
       </div>
     </div>
   </section>
+  -->
 
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-top">
-      <h2 class="footer-logo"><span>Kiarie Chege</span></h2>
-      <p><i class="fas fa-phone"></i> +254 710 913 737</p>
-      <p><i class="fas fa-envelope"></i> <a href="mailto:kiariebrian8@gmail.com">kiariebrian8@gmail.com</a></p>
-      <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya.</p>
-      <div class="footer-socials">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <div class="footer-brand">
+        <div class="logo">
+          <img src="images/kiarie.png" alt="Kiarie Logo" class="logo-img">
+          <h2 class="footer-logo"><span>Kiarie Chege</span></h2>
+        </div>
+        <p>Creating beautiful digital experiences through innovative design and development solutions.</p>
+        <div class="footer-socials">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+          <li><a href="about.html"><i class="fas fa-chevron-right"></i> About</a></li>
+          <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+          <li><a href="portfolio.html"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h3>Contact Info</h3>
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <span>+254 710 913 737</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span><a href="mailto:kiariebrian8@gmail.com">kiariebrian8@gmail.com</a></span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Nairobi, Kenya</span>
+          </div>
+        </div>
       </div>
     </div>
+
     <div class="footer-bottom">
       <p>© <span id="currentYear"></span> Kiarie Chege. All Rights Reserved.</p>
     </div>
+
     <button id="scrollToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
   </footer>
 
@@ -1016,11 +1040,13 @@
           <p>Detailed description of the project goes here.</p>
           
           <h3>Key Features</h3>
+          <p></p>
           <ul>
             <!-- Features will be inserted here by JavaScript -->
           </ul>
 
           <h3>Technologies Used</h3>
+          <p></p>
           <div class="modal-tech">
             <!-- Tech tags will be inserted here by JavaScript -->
           </div>
@@ -1028,6 +1054,21 @@
           <div class="modal-links">
             <a href="#" class="modal-link live">View Live</a>
             <a href="#" class="modal-link github">GitHub</a>
+          </div>
+        </div>
+        <div class="modal-case-study">
+          <h3>Case Study</h3>
+          <div class="case-study-content">
+            <h4>Research</h4>
+            <p>Describe the user research, interviews, or surveys conducted to understand user needs and pain points.</p>
+            <h4>Wireframes</h4>
+            <p>Showcase initial sketches or wireframes created to map out the user flow and layout.</p>
+            <h4>Prototyping</h4>
+            <p>Discuss the creation of interactive prototypes using tools like Figma or Adobe XD.</p>
+            <h4>Testing</h4>
+            <p>Summarize usability testing sessions, feedback received, and iterations made.</p>
+            <h4>Final Design</h4>
+            <p>Present the final UI, highlighting improvements and user-centered solutions.</p>
           </div>
         </div>
       </div>
@@ -1175,6 +1216,22 @@
         ],
         liveLink: "#",
         githubLink: "#"
+      },
+      project1: {
+        title: "Project 1",
+        category: "Your Category Here",
+        description: "A brief description of Project 1 goes here. Highlight its key features and technologies used.",
+        features: [
+          "Feature 1",
+          "Feature 2"
+        ],
+        tech: ["Tech 1", "Tech 2"],
+        images: [
+          "#",
+          "#"
+        ],
+        liveLink: "#live-demo-url",
+        githubLink: "#github-repo-url"
       }
     };
 
@@ -1184,6 +1241,8 @@
       viewButton.addEventListener('click', (e) => {
         e.preventDefault();
         const projectId = item.getAttribute('data-category');
+        console.log('Clicked projectId:', projectId);
+        console.log('Project Data:', projectData);
         openModal(projectId);
       });
     });
@@ -1311,6 +1370,24 @@
       }
     `;
     document.head.appendChild(style);
+
+    // Scroll to Top Button
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.style.display = 'flex';
+      } else {
+        scrollToTopBtn.style.display = 'none';
+      }
+    });
+    
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
   </script>
 </body>
 </html>

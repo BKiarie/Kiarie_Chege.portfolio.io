@@ -8,6 +8,7 @@
   <title>Services - UI Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="images/kiarie.png">
   <style>
     .services-section {
       padding: 6rem 2rem;
@@ -26,10 +27,11 @@
       padding: 2rem;
       border-radius: 10px;
       text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.3s ease;
       cursor: pointer;
       position: relative;
       overflow: hidden;
+      min-height: 300px;
     }
     .service-card:hover {
       transform: translateY(-10px);
@@ -96,8 +98,8 @@
       background-color: #2A3035;
       margin: 5% auto;
       padding: 2rem;
-      width: 80%;
-      max-width: 800px;
+      width: 60%;
+      max-width: 600px;
       border-radius: 10px;
       position: relative;
       animation: modalFadeIn 0.3s ease;
@@ -126,6 +128,8 @@
       display: flex;
       align-items: center;
       margin-bottom: 2rem;
+      border-bottom: 2px solid #00FF90;
+      padding-bottom: 1rem;
     }
     
     .modal-icon {
@@ -143,21 +147,64 @@
     .modal-body {
       color: #fff;
       line-height: 1.8;
+      display: flex;
+      flex-direction: column;
     }
-    
-    .modal-body h4 {
-      color: #00FF90;
-      margin: 1.5rem 0 1rem;
-      font-size: 1.3rem;
+
+    .modal-body p {
+      color: #fff;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      width: auto;
+      text-align: left;
     }
-    
-    .modal-body ul {
-      margin-left: 1.5rem;
+
+    .modal-body .content-section {
+      display: flex;
+      flex-wrap: wrap;
       margin-bottom: 1.5rem;
     }
-    
-    .modal-body li {
+
+    .modal-body .content-section h4 {
+      color: #00FF90;
+      font-size: 1.3rem;
+      margin: 0 1.5rem 0.8rem 0;
+      min-width: 150px; /* Adjust as needed */
+      text-align: left;
+    }
+
+    .modal-body .content-section ul,
+    .modal-body .content-section ol,
+    .modal-body .content-section p:not(:first-child) {
+      flex-grow: 1;
+      margin: 0 0 0.8rem 0;
+      padding: 0;
+      list-style-position: inside;
+    }
+
+    .modal-body .content-section ul li,
+    .modal-body .content-section ol li {
       margin-bottom: 0.5rem;
+       line-height: 1.6;
+    }
+
+    .modal-body .content-section ul li::before {
+      content: '•';
+      color: #FFB800;
+      margin-right: 0.5rem;
+    }
+
+    .modal-body .content-section ol {
+        counter-reset: item;
+    }
+
+    .modal-body .content-section ol li {
+        counter-increment: item;
+    }
+
+    .modal-body .content-section ol li::before {
+        content: counter(item) '. ';
+        color: #FFB800;
     }
     
     .modal-footer {
@@ -181,6 +228,10 @@
       transform: translateY(-3px);
     }
     
+    /* Ensure no click indicator on cards */
+    .service-card .click-indicator {
+        display: none !important;
+    }
     
     /* Company Logos Section Styles */
     .company-logos-section {
@@ -243,8 +294,145 @@
     /* Responsive adjustments */
     @media (max-width: 768px) {
       .modal-content {
-        width: 95%;
+        width: 90%;
         margin: 10% auto;
+        padding: 1.5rem;
+      }
+    }
+
+    .service-details {
+      display: none;
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      background: rgba(0, 255, 144, 0.05);
+      border-radius: 8px;
+      text-align: left;
+      transition: all 0.3s ease;
+    }
+
+    .service-details.active {
+      display: block;
+      animation: fadeInExpand 0.4s ease forwards;
+    }
+
+    @keyframes fadeInExpand {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .service-details h4 {
+      color: #00FF90;
+      font-size: 1.3rem;
+      margin: 2rem 0 1rem;
+      text-align: center;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .service-details h4::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 2px;
+      background: #FFB800;
+    }
+
+    .service-details ul, .service-details ol {
+      color: #fff;
+      margin: 1rem 0 1.5rem;
+      list-style: none;
+      padding: 0;
+    }
+
+    .service-details li {
+      margin-bottom: 0.8rem;
+      line-height: 1.5;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .service-details ul li::before {
+      content: '•';
+      color: #FFB800;
+      position: absolute;
+      left: 0;
+    }
+
+    .service-details ol {
+      counter-reset: item;
+    }
+
+    .service-details ol li {
+      counter-increment: item;
+    }
+
+    .service-details ol li::before {
+      content: counter(item) '.';
+      color: #FFB800;
+      position: absolute;
+      left: 0;
+    }
+
+    .service-details p {
+      color: #fff;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .service-btn {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background-color: #00FF90;
+      color: #1A2025;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .service-btn:hover {
+      background-color: #FFB800;
+      transform: translateY(-3px);
+    }
+
+    .click-indicator {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #00FF90;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      animation: bounce 2s infinite;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .service-card:hover .click-indicator {
+      opacity: 1;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+      }
+      40% {
+        transform: translateY(-10px) translateX(-50%);
+      }
+      60% {
+        transform: translateY(-5px) translateX(-50%);
       }
     }
   </style>
@@ -255,7 +443,7 @@
  
   <nav class="navbar" id="navbar">
     <div class="logo">
-      <img src="images/image.jpeg" alt="Kiarie Logo" class="logo-img">
+      <img src="images/kiarie.png" alt="Kiarie Logo" class="logo-img">
       <span>Kiarie Chege</span>
     </div>
 
@@ -301,37 +489,61 @@
       <div class="service-card float" onclick="openServiceModal('web-dev')">
         <i class="fas fa-code service-icon"></i>
         <h3>Web Development</h3>
-        <p>Building responsive and modern websites tailored to your needs.</p>
+        <p>My web development services deliver high-performance, responsive websites that drive results for your business. I combine technical expertise with creative design to create websites that not only look great but also perform exceptionally well.</p>
+        <div class="click-indicator">
+          <i class="fas fa-hand-pointer"></i>Click to learn more
+        </div>
+        <a href="contact.html" class="service-btn">Get a Quote</a>
       </div>
 
       <div class="service-card float" style="animation-delay: 0.2s;" onclick="openServiceModal('app-dev')">
         <i class="fas fa-mobile-alt service-icon"></i>
         <h3>App Development</h3>
-        <p>Creating efficient and engaging mobile applications for all platforms.</p>
+        <p>My app development services create powerful, user-friendly mobile applications that engage users and drive business growth. I build apps for iOS, Android, and cross-platform solutions that deliver exceptional user experiences.</p>
+        <div class="click-indicator">
+          <i class="fas fa-hand-pointer"></i>Click to learn more
+        </div>
+        <a href="contact.html" class="service-btn">Get a Quote</a>
       </div>
 
       <div class="service-card float" style="animation-delay: 0.4s;" onclick="openServiceModal('ui-ux')">
         <i class="fas fa-paint-brush service-icon"></i>
         <h3>UI/UX Design</h3>
-        <p>Designing intuitive and beautiful user experiences and interfaces.</p>
+        <p>My UI/UX design services create intuitive, engaging user experiences that delight users and drive business goals. I combine aesthetics with functionality to design interfaces that are both beautiful and easy to use.</p>
+        <div class="click-indicator">
+          <i class="fas fa-hand-pointer"></i>Click to learn more
+        </div>
+        <a href="contact.html" class="service-btn">Get a Quote</a>
       </div>
 
       <div class="service-card float" style="animation-delay: 0.6s;" onclick="openServiceModal('seo')">
         <i class="fas fa-chart-line service-icon"></i>
         <h3>SEO & Marketing</h3>
-        <p>Boosting your online visibility and driving more business results.</p>
+        <p>My SEO and marketing services help your business increase visibility, attract more visitors, and convert them into customers. I use data-driven strategies to improve your search rankings and drive targeted traffic to your website.</p>
+        <div class="click-indicator">
+          <i class="fas fa-hand-pointer"></i>Click to learn more
+        </div>
+        <a href="contact.html" class="service-btn">Get a Quote</a>
       </div>
 
       <div class="service-card float" style="animation-delay: 0.8s;" onclick="openServiceModal('photography')">
-        <i class="fas fa-camera-retro service-icon"></i>
+        <i class="fas fa-palette service-icon"></i>
         <h3>Graphic Design</h3>
-        <p>Creating captivating visuals that embody and enhance your brand's identity.</p>
+        <p>Creating compelling visual content that strengthens your brand identity and communicates your message effectively. I combine creativity with strategic thinking to deliver designs that make an impact.</p>
+        <div class="click-indicator">
+          <i class="fas fa-hand-pointer"></i>Click to learn more
+        </div>
+        <a href="contact.html" class="service-btn">Get a Quote</a>
       </div>
 
       <div class="service-card float" style="animation-delay: 1s;" onclick="openServiceModal('support')">
         <i class="fas fa-headset service-icon"></i>
         <h3>Customer Support</h3>
-        <p>Ensuring excellent support experience for your clients globally.</p>
+        <p>My customer support services ensure your clients receive exceptional service around the clock. I help you build strong relationships with your customers through responsive, helpful, and personalized support.</p>
+        <div class="click-indicator">
+          <i class="fas fa-hand-pointer"></i>Click to learn more
+        </div>
+        <a href="contact.html" class="service-btn">Get a Quote</a>
       </div>
     </div>
   </section>
@@ -500,11 +712,11 @@
     <div class="modal-content">
       <span class="close-modal" onclick="closeServiceModal('photography')">&times;</span>
       <div class="modal-header">
-        <i class="fas fa-camera-retro modal-icon"></i>
+        <i class="fas fa-palette modal-icon"></i>
         <h2 class="modal-title">Graphic Design</h2>
       </div>
       <div class="modal-body">
-        <p>My photography services capture the essence of your brand through stunning visuals that tell your story. I create high-quality images that elevate your brand presence and connect with your audience on an emotional level.</p>
+        <p>Creating compelling visual content that strengthens your brand identity and communicates your message effectively. I combine creativity with strategic thinking to deliver designs that make an impact.</p>
         
         <h4>What I Offer</h4>
         <ul>
@@ -528,7 +740,7 @@
         </ol>
         
         <h4>Tools I Use</h4>
-        <p>Professional design software, including Adobe Creative Suite, along with advanced graphic tablets and resources for high-quality output.</p>
+        <p>Adobe Creative Suite (Photoshop, Illustrator, InDesign), Figma, Canva Pro, and more.</p>
       </div>
       <div class="modal-footer">
         <a href="contact.html" class="modal-btn">Get a Quote</a>
@@ -631,10 +843,12 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <img src="images/kiarie.png" alt="Kiarie Logo" class="logo-img">
       <h2 class="footer-logo"><span>Kiarie Chege</span></h2>
-      <p><i class="fas fa-phone"></i> +254 710 913 737</p>
-      <p><i class="fas fa-envelope"></i> <a href="mailto:kiariebrian8@gmail.com">kiariebrian8@gmail.com</a></p>
-      <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya.</p>
+        </div>
+        <p>Creating beautiful digital experiences through innovative design and development solutions.</p>
       <div class="footer-socials">
         <a href="#"><i class="fab fa-facebook-f"></i></a>
         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -642,9 +856,41 @@
         <a href="#"><i class="fab fa-linkedin-in"></i></a>
       </div>
     </div>
+
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+          <li><a href="about.html"><i class="fas fa-chevron-right"></i> About</a></li>
+          <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+          <li><a href="portfolio.html"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h3>Contact Info</h3>
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <span>+254 710 913 737</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span><a href="mailto:kiariebrian8@gmail.com">kiariebrian8@gmail.com</a></span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Nairobi, Kenya</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="footer-bottom">
       <p>© <span id="currentYear"></span> Kiarie Chege. All Rights Reserved.</p>
     </div>
+
     <button id="scrollToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
   </footer>
 
@@ -652,15 +898,61 @@
   <script>
     document.getElementById('currentYear').textContent = new Date().getFullYear();
     
+    // Service Card Click Functionality
+    const serviceCards = document.querySelectorAll('.service-card');
+    
+    serviceCards.forEach(card => {
+      card.addEventListener('click', function(e) {
+        // Don't trigger if clicking the "Get a Quote" button
+        if (e.target.classList.contains('service-btn')) {
+          return;
+        }
+        
+        const details = this.querySelector('.service-details');
+        const isActive = details.classList.contains('active');
+        const clickIndicator = this.querySelector('.click-indicator');
+        
+        // Close all other service details
+        document.querySelectorAll('.service-details').forEach(d => {
+          d.classList.remove('active');
+        });
+        
+        // Hide all click indicators
+        document.querySelectorAll('.click-indicator').forEach(i => {
+          i.style.display = 'none';
+        });
+        
+        // Toggle current service details
+        if (!isActive) {
+          details.classList.add('active');
+          // Scroll the details into view if needed
+          details.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+    });
+    
+    // Close service details when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.service-card')) {
+        document.querySelectorAll('.service-details').forEach(d => {
+          d.classList.remove('active');
+        });
+        // Show all click indicators again
+        document.querySelectorAll('.click-indicator').forEach(i => {
+          i.style.display = 'block';
+        });
+      }
+    });
+    
     // Service Modal Functions
     function openServiceModal(serviceId) {
       document.getElementById(serviceId + '-modal').style.display = 'block';
-      document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+      document.body.style.overflow = 'hidden';
     }
     
     function closeServiceModal(serviceId) {
       document.getElementById(serviceId + '-modal').style.display = 'none';
-      document.body.style.overflow = 'auto'; // Re-enable scrolling
+      document.body.style.overflow = 'auto';
     }
     
     // Close modal when clicking outside of it
@@ -670,6 +962,24 @@
         document.body.style.overflow = 'auto';
       }
     }
+
+    // Simple scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.style.display = 'flex';
+      } else {
+        scrollToTopBtn.style.display = 'none';
+      }
+    });
+    
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
   </script>
 </body>
 </html>

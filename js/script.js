@@ -176,3 +176,253 @@ scrollToTopBtn.addEventListener('click', () => {
     behavior: "smooth"
   });
 });
+
+// Service Modal Functionality
+function openServiceModal(serviceId) {
+  const modal = document.getElementById(`${serviceId}-modal`);
+  if (modal) {
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeServiceModal(serviceId) {
+  const modal = document.getElementById(`${serviceId}-modal`);
+  if (modal) {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+}
+
+// Close modal when clicking outside
+window.addEventListener('click', (e) => {
+  const modals = document.querySelectorAll('.service-modal');
+  modals.forEach(modal => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  });
+});
+
+// Portfolio Project View Functionality
+const projectData = {
+  ecommerce: {
+    title: "E-commerce Website",
+    category: "E-commerce",
+    description: "A modern e-commerce platform with seamless user experience, featuring product browsing, cart management, secure checkout, and order tracking.",
+    features: [
+      "Responsive product catalog with search and filters",
+      "Secure payment gateway integration",
+      "User authentication and profile management",
+      "Order tracking and history",
+      "Admin dashboard for inventory management"
+    ],
+    tech: ["React", "Node.js", "MongoDB", "Express", "Stripe API"],
+    images: [
+      "images/website ecomerce.jpg"
+    ],
+    liveLink: "#",
+    githubLink: "#"
+  },
+  fitness: {
+    title: "Fitness Tracking App",
+    category: "Fitness",
+    description: "Mobile app for tracking workouts and nutrition, helping users achieve their fitness goals.",
+    features: [
+      "Workout and nutrition tracking",
+      "Progress analytics",
+      "Goal setting",
+      "Social sharing",
+      "Personalized recommendations"
+    ],
+    tech: ["Flutter", "Firebase", "Chart.js"],
+    images: [
+      "images/fitness app.jpg"
+    ],
+    liveLink: "#",
+    githubLink: "#"
+  },
+  banking: {
+    title: "Banking App UI",
+    category: "Banking",
+    description: "Modern and secure banking interface design for seamless financial management.",
+    features: [
+      "Secure login",
+      "Account overview",
+      "Transaction history",
+      "Fund transfers",
+      "Bill payments"
+    ],
+    tech: ["Figma", "React Native", "Node.js"],
+    images: [
+      "images/banking.jpg"
+    ],
+    liveLink: "#",
+    githubLink: "#"
+  },
+  uiux: {
+    title: "Mobile App UI/UX Design",
+    category: "UI/UX",
+    description: "Creating intuitive and engaging mobile experiences with a focus on usability and aesthetics.",
+    features: [
+      "User research",
+      "Wireframing",
+      "Prototyping",
+      "User testing",
+      "Visual design"
+    ],
+    tech: ["Adobe XD", "Sketch", "InVision"],
+    images: [
+      "images/UI UX.jpg"
+    ],
+    liveLink: "#",
+    githubLink: "#"
+  },
+  web: {
+    title: "Corporate Website",
+    category: "Web",
+    description: "Responsive corporate website with modern design and optimized performance.",
+    features: [
+      "Responsive layout",
+      "SEO optimization",
+      "Content management",
+      "Contact forms",
+      "Analytics integration"
+    ],
+    tech: ["HTML", "CSS", "JavaScript", "WordPress"],
+    images: [
+      "images/corporate website.jpg"
+    ],
+    liveLink: "#",
+    githubLink: "#"
+  },
+  app: {
+    title: "Food Delivery App",
+    category: "App",
+    description: "Food delivery platform with real-time tracking and seamless ordering experience.",
+    features: [
+      "Real-time order tracking",
+      "Multiple payment options",
+      "Restaurant search",
+      "User reviews",
+      "Push notifications"
+    ],
+    tech: ["React Native", "Firebase", "Google Maps API"],
+    images: [
+      "images/food delivery.png"
+    ],
+    liveLink: "#",
+    githubLink: "#"
+  }
+};
+
+function openProjectModal(projectId) {
+  const project = projectData[projectId];
+  if (!project) return;
+
+  const modal = document.getElementById('projectModal');
+  const modalContent = modal.querySelector('.modal-content');
+  
+  // Update modal content
+  modalContent.querySelector('h2').textContent = project.title;
+  modalContent.querySelector('p').textContent = project.category;
+  
+  // Update gallery images
+  const gallery = modalContent.querySelector('.modal-gallery');
+  gallery.innerHTML = project.images.map(img => `
+    <img src="${img}" alt="${project.title}" loading="lazy">
+  `).join('');
+  
+  // Update project details
+  const details = modalContent.querySelector('.modal-details');
+  details.querySelector('h3 + p').textContent = project.description;
+  
+  // Update features list
+  const featuresList = details.querySelector('ul');
+  featuresList.innerHTML = project.features.map(feature => `<li>${feature}</li>`).join('');
+  
+  // Update tech tags
+  const techContainer = details.querySelector('.modal-tech');
+  techContainer.innerHTML = project.tech.map(tech => `<span class="tech-tag">${tech}</span>`).join('');
+  
+  // Update links
+  const links = details.querySelector('.modal-links');
+  links.querySelector('.live').href = project.liveLink;
+  links.querySelector('.github').href = project.githubLink;
+  
+  // Show modal
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeProjectModal() {
+  const modal = document.getElementById('projectModal');
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// Event Listeners for Project Modal
+document.addEventListener('DOMContentLoaded', () => {
+  const projectModal = document.getElementById('projectModal');
+  if (projectModal) {
+    const closeBtn = projectModal.querySelector('.modal-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeProjectModal);
+    }
+    
+    projectModal.addEventListener('click', (e) => {
+      if (e.target === projectModal) {
+        closeProjectModal();
+      }
+    });
+  }
+
+  // Add click handlers to portfolio items
+  const portfolioItems = document.querySelectorAll('.portfolio-item');
+  portfolioItems.forEach(item => {
+    const viewButton = item.querySelector('.portfolio-link');
+    if (viewButton) {
+      viewButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        const projectId = item.getAttribute('data-category');
+        openProjectModal(projectId);
+      });
+    }
+  });
+});
+
+// Chat Functionality
+const chatPopup = document.querySelector('.chat-popup');
+if (chatPopup) {
+  const closeChat = chatPopup.querySelector('.close-chat');
+  const chatInput = chatPopup.querySelector('.chat-input input');
+  const chatSend = chatPopup.querySelector('.chat-input button');
+  const chatBody = chatPopup.querySelector('.chat-body');
+
+  if (closeChat) {
+    closeChat.addEventListener('click', () => {
+      chatPopup.classList.remove('active');
+    });
+  }
+
+  if (chatSend && chatInput && chatBody) {
+    chatSend.addEventListener('click', () => {
+      const message = chatInput.value.trim();
+      if (message) {
+        const messageElement = document.createElement('div');
+        messageElement.className = 'chat-message';
+        messageElement.innerHTML = `<p>${message}</p>`;
+        chatBody.appendChild(messageElement);
+        chatInput.value = '';
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }
+    });
+
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        chatSend.click();
+      }
+    });
+  }
+}
