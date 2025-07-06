@@ -716,6 +716,61 @@
         height: 150px;
       }
     }
+
+    /* Case Study Section Styles */
+    .modal-case-study {
+      display: block;
+      margin-top: 2.5rem;
+      background: rgba(0,255,144,0.07);
+      border-radius: 14px;
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,255,144,0.10);
+      border-left: 5px solid #00FF90;
+    }
+    .modal-case-study h3 {
+      color: #00FF90;
+      font-size: 1.4rem;
+      margin-bottom: 1.2rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .case-study-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .case-step {
+      background: #23282e;
+      border-radius: 10px;
+      padding: 1.1rem 1rem 1rem 1.2rem;
+      box-shadow: 0 1px 4px rgba(0,255,144,0.04);
+      border-left: 4px solid #00FF90;
+      position: relative;
+      transition: box-shadow 0.2s;
+    }
+    .case-step:hover {
+      box-shadow: 0 4px 16px rgba(0,255,144,0.13);
+    }
+    .case-step h4 {
+      color: #00FF90;
+      margin: 0 0 0.4rem 0;
+      font-size: 1.08rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .case-step p {
+      color: #E0E0E0;
+      font-size: 0.99rem;
+      margin: 0;
+    }
+    @media (max-width: 600px) {
+      .modal-case-study {
+        padding: 1.2rem 0.5rem 1rem 0.5rem;
+      }
+      .case-step {
+        padding: 0.8rem 0.5rem 0.7rem 0.7rem;
+      }
+    }
   </style>
 </head>
 
@@ -1056,19 +1111,10 @@
             <a href="#" class="modal-link github">GitHub</a>
           </div>
         </div>
-        <div class="modal-case-study">
+        <div class="modal-case-study active">
           <h3>Case Study</h3>
           <div class="case-study-content">
-            <h4>Research</h4>
-            <p>Describe the user research, interviews, or surveys conducted to understand user needs and pain points.</p>
-            <h4>Wireframes</h4>
-            <p>Showcase initial sketches or wireframes created to map out the user flow and layout.</p>
-            <h4>Prototyping</h4>
-            <p>Discuss the creation of interactive prototypes using tools like Figma or Adobe XD.</p>
-            <h4>Testing</h4>
-            <p>Summarize usability testing sessions, feedback received, and iterations made.</p>
-            <h4>Final Design</h4>
-            <p>Present the final UI, highlighting improvements and user-centered solutions.</p>
+            <!-- Case study content will be inserted here by JavaScript -->
           </div>
         </div>
       </div>
@@ -1115,7 +1161,14 @@
           "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800"
         ],
         liveLink: "#",
-        githubLink: "#"
+        githubLink: "#",
+        caseStudy: {
+          research: "Interviewed 15 online shoppers to understand their frustrations with existing e-commerce platforms. Key insights included the need for faster checkout and better product discovery.",
+          wireframes: "Designed wireframes for the homepage, product pages, and checkout flow, focusing on simplicity and speed.",
+          prototyping: "Built interactive prototypes in Figma to test navigation and cart management with users.",
+          testing: "Conducted usability tests with 8 participants, leading to improvements in the search and filter experience.",
+          finalDesign: "The final platform features a streamlined checkout, robust search, and a visually appealing product catalog, resulting in increased conversion rates."
+        }
       },
       fitness: {
         title: "Fitness Tracking App",
@@ -1135,7 +1188,14 @@
           "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800"
         ],
         liveLink: "#",
-        githubLink: "#"
+        githubLink: "#",
+        caseStudy: {
+          research: "Interviewed fitness enthusiasts and trainers to identify essential features for tracking workouts and nutrition.",
+          wireframes: "Sketched wireframes for workout logging, nutrition tracking, and progress analytics screens.",
+          prototyping: "Created a React Native prototype to test the workout planning flow.",
+          testing: "Gathered feedback from 10 beta users, leading to improved analytics and social features.",
+          finalDesign: "The app now offers a seamless experience for tracking fitness goals, with engaging social and analytics features."
+        }
       },
       banking: {
         title: "Banking App UI",
@@ -1155,7 +1215,14 @@
           "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800"
         ],
         liveLink: "#",
-        githubLink: "#"
+        githubLink: "#",
+        caseStudy: {
+          research: "Conducted user interviews with 10 banking customers to identify pain points in digital banking. Key findings included the need for real-time updates and simplified navigation.",
+          wireframes: "Created low-fidelity wireframes in Figma to map out the main dashboard, transaction history, and transfer flows.",
+          prototyping: "Developed interactive prototypes using Adobe XD, allowing stakeholders to experience the app flow and provide feedback.",
+          testing: "Ran usability tests with 5 users, iterating on the design to improve clarity of the navigation and accessibility of key features.",
+          finalDesign: "Final UI features a clean, modern look with accessible color contrast and intuitive controls, resulting in a 30% faster task completion rate in user tests."
+        }
       },
       uiux: {
         title: "Mobile App UI/UX Design",
@@ -1175,7 +1242,14 @@
           "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800"
         ],
         liveLink: "#",
-        githubLink: "#"
+        githubLink: "#",
+        caseStudy: {
+          research: "Surveyed 50+ users to understand mobile app usage habits and accessibility needs. Discovered a strong preference for customizable themes and large touch targets.",
+          wireframes: "Sketched multiple layout options for onboarding and main navigation, focusing on clarity and ease of use.",
+          prototyping: "Built clickable prototypes in InVision to demonstrate user flows and gather early feedback.",
+          testing: "Conducted A/B testing on two navigation styles, leading to a 20% increase in user satisfaction for the chosen design.",
+          finalDesign: "The final design incorporates a modular system, high-contrast colors, and smooth animations, resulting in a visually appealing and accessible app."
+        }
       },
       web: {
         title: "Corporate Website",
@@ -1195,7 +1269,14 @@
           "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800"
         ],
         liveLink: "#",
-        githubLink: "#"
+        githubLink: "#",
+        caseStudy: {
+          research: "Interviewed company stakeholders to define business goals and user personas. Identified the need for a mobile-first approach and easy content updates.",
+          wireframes: "Drafted wireframes for homepage, services, and contact pages, emphasizing clear calls to action.",
+          prototyping: "Used Figma to create interactive page flows, allowing for rapid iteration based on feedback.",
+          testing: "Tested the site on multiple devices and browsers, resolving layout and performance issues.",
+          finalDesign: "Launched a fully responsive site with a CMS backend, resulting in a 40% increase in user engagement."
+        }
       },
       app: {
         title: "Food Delivery App",
@@ -1215,7 +1296,14 @@
           "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800"
         ],
         liveLink: "#",
-        githubLink: "#"
+        githubLink: "#",
+        caseStudy: {
+          research: "Analyzed competitor apps and surveyed 30 users to identify desired features and pain points in food delivery.",
+          wireframes: "Created wireframes for restaurant listings, order flow, and delivery tracking screens.",
+          prototyping: "Developed a prototype in Flutter to test real-time tracking and payment flows.",
+          testing: "Beta tested with 20 users, refining the order process and improving delivery status notifications.",
+          finalDesign: "Final app features intuitive navigation, real-time updates, and a visually appealing interface, leading to high user retention."
+        }
       },
       project1: {
         title: "Project 1",
@@ -1280,6 +1368,35 @@
       const links = details.querySelector('.modal-links');
       links.querySelector('.live').href = project.liveLink;
       links.querySelector('.github').href = project.githubLink;
+      
+      // Update case study section
+      const caseStudyContent = modalContent.querySelector('.modal-case-study .case-study-content');
+      if (project.caseStudy) {
+        caseStudyContent.innerHTML = `
+          <div class="case-step">
+            <h4>Research</h4>
+            <p>${project.caseStudy.research}</p>
+          </div>
+          <div class="case-step">
+            <h4>Wireframes</h4>
+            <p>${project.caseStudy.wireframes}</p>
+          </div>
+          <div class="case-step">
+            <h4>Prototyping</h4>
+            <p>${project.caseStudy.prototyping}</p>
+          </div>
+          <div class="case-step">
+            <h4>Testing</h4>
+            <p>${project.caseStudy.testing}</p>
+          </div>
+          <div class="case-step">
+            <h4>Final Design</h4>
+            <p>${project.caseStudy.finalDesign}</p>
+          </div>
+        `;
+      } else {
+        caseStudyContent.innerHTML = '<p>No case study available for this project.</p>';
+      }
       
       // Show modal
       modal.classList.add('active');
